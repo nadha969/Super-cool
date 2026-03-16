@@ -4,6 +4,7 @@ import Header from "@/components/Layout/Header";
 import Image from "next/image";
 import Brands from "@/components/Home/Brands";
 import Model from "@/components/Home/Model";
+import BlogCard from "@/components/Home/Insight";
 export default function Home() {
   return (
   <div>
@@ -19,6 +20,7 @@ export default function Home() {
     <Collection/>
     <Brands/>
     <Model/>
+    <BlogCard/>
     <Footer/>
   </div>
   );
