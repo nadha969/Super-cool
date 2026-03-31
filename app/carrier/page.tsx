@@ -1,4 +1,5 @@
 import Carrier from "@/components/Carrier/carrier";
+import BlogCard from "@/components/Home/Insight";
 import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
 
@@ -13,6 +14,7 @@ export default function CarrierPage(){
     </h1>
   </main>
     <Carrier/>
+    <BlogCard/>
   <Footer />
 </div>
     )

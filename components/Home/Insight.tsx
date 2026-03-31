@@ -33,7 +33,10 @@ const posts = [
 
 export default function BlogCard() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-16">
+    <section className="max-w-7xl mx-auto px-4 mb-10">
+        <div className="py-10">
+            <p className="text-center font-semibold text-2xl text-gray-700">Latest News & Insights</p>
+        </div>
       <div className="grid md:grid-cols-3 gap-8">
         {posts.map((post, index) => (
           <Link key={index} href={`/blogs/${post.slug}`}>
