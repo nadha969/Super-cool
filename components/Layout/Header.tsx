@@ -37,7 +37,7 @@ export default function Header() {
             <Link className="hover:underline hover:text-black" href="/carrier">Carrier</Link>
             <Link className="hover:underline hover:text-black" href="/daikin">Daikin</Link>
             <Link className="hover:underline hover:text-black" href="/midea">Midea</Link>
-            <Link className="hover:underline hover:text-black" href="/o-general">O General</Link>
+            <Link className="hover:underline hover:text-black" href="/general">O General</Link>
             <Link className="hover:underline hover:text-black" href="/diakool">Diakool</Link>
             <Link className="hover:underline hover:text-black" href="/super-general">Super General</Link>
           </nav>
