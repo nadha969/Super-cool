@@ -38,7 +38,7 @@ export default function Header() {
             <Link className="hover:underline hover:text-black" href="/daikin">Daikin</Link>
             <Link className="hover:underline hover:text-black" href="/midea">Midea</Link>
             <Link className="hover:underline hover:text-black" href="/general">O General</Link>
-            <Link className="hover:underline hover:text-black" href="/diakool">Diakool</Link>
+            <Link className="hover:underline hover:text-black" href="/tcl">TCL</Link>
             <Link className="hover:underline hover:text-black" href="/supergeneral">Super General</Link>
           </nav>
 
@@ -68,9 +68,9 @@ export default function Header() {
               <Link href="/carrier">Carrier</Link>
               <Link href="/daikin">Daikin</Link>
               <Link href="/midea">Midea</Link>
-              <Link href="/o-general">O General</Link>
-              <Link href="/diakool">Diakool</Link>
-              <Link href="/super-general">Super General</Link>
+              <Link href="/general">O General</Link>
+              <Link href="/tcl">TCL</Link>
+              <Link href="/supergeneral">Super General</Link>
             </nav>
           </div>
         )}
