@@ -3,6 +3,11 @@ import Image from "next/image";
 export default function Daikin() {
   return (
     <div>
+       <main className="pt-30 flex-1">
+          <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
+            Daikin Air Conditioners Collection
+          </h1>
+        </main>
       <section className="max-w-7xl mx-auto px-4 py-12">
         
         {/* Description */}

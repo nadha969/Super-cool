@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import BlogCard from "../Home/Insight";
 
 interface Collection {
   title: string;
@@ -30,7 +31,13 @@ const collections: Collection[] = [
 
 export default function Midea() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
+   <div>
+     <main className="pt-30 flex-1">
+          <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
+          Midea Air Conditioners Collection 
+          </h1>
+        </main>
+     <section className="max-w-7xl mx-auto px-4 py-12">
       
       {/* Description */}
       <div className="pb-10">
@@ -68,5 +75,7 @@ export default function Midea() {
         ))}
       </div>
     </section>
+    <BlogCard/>
+   </div>
   );
 }

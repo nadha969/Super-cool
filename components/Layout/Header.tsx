@@ -34,12 +34,12 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 text-gray-700 font-medium">
             <Link className="hover:underline hover:text-black" href="/">Home</Link>
-            <Link className="hover:underline hover:text-black" href="/carrier">Carrier</Link>
-            <Link className="hover:underline hover:text-black" href="/daikin">Daikin</Link>
-            <Link className="hover:underline hover:text-black" href="/midea">Midea</Link>
-            <Link className="hover:underline hover:text-black" href="/general">O General</Link>
-            <Link className="hover:underline hover:text-black" href="/tcl">TCL</Link>
-            <Link className="hover:underline hover:text-black" href="/supergeneral">Super General</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/carrier">Carrier</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/daikin">Daikin</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/midea">Midea</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/general">O General</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/tcl">TCL</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/supergeneral">Super General</Link>
           </nav>
 
           {/* Right Icons */}
@@ -65,12 +65,12 @@ export default function Header() {
           <div className="lg:hidden border-t bg-white">
             <nav className="flex flex-col gap-4 p-5 text-gray-700 font-medium">
               <Link href="/">Home</Link>
-              <Link href="/carrier">Carrier</Link>
-              <Link href="/daikin">Daikin</Link>
-              <Link href="/midea">Midea</Link>
-              <Link href="/general">O General</Link>
-              <Link href="/tcl">TCL</Link>
-              <Link href="/supergeneral">Super General</Link>
+              <Link href="/brands/carrier">Carrier</Link>
+              <Link href="/brands/daikin">Daikin</Link>
+              <Link href="/brands/midea">Midea</Link>
+              <Link href="/brands/general">O General</Link>
+              <Link href="/brands/tcl">TCL</Link>
+              <Link href="/brands/supergeneral">Super General</Link>
             </nav>
           </div>
         )}

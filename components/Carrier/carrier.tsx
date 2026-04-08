@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import BlogCard from "../Home/Insight";
 
 interface Collection {
   title: string;
@@ -12,26 +13,35 @@ const collections: Collection[] = [
     title: "Carrier Wall Split Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/carrier-wall-split",
+    href: "/carrier/carrier-wall-split",
   },
   {
     title: "Carrier Floor Standing AC Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/carrier-floor-standing",
+    href: "/carrier/carrier-floor-standing",
   },
   {
     title: "Carrier Ducted AC Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/carrier-ducted",
+    href: "/carrier/carrier-ducted",
   },
 ];
 
 export default function Carrier() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
+    
+  <div>
+     <main className="pt-30 flex-1">
+    <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
+      Carrier Air Conditioners Collection
+    </h1>
+  </main>
+      <section className="max-w-7xl mx-auto px-4 py-12">
+     
         <div className="pb-10">
+
             <p className="text-center text-lg">Carrier Air Conditioners deliver reliable cooling for UAE homes and businesses. Featuring inverter technology, corrosion-resistant components, and high-temperature operation, these energy-efficient systems include split, ducted, cassette, and VRF units. Ideal for both residential and commercial use, Carrier AC units reduce energy costs while maintaining optimal comfort in extreme climates</p>
         </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -58,5 +68,8 @@ export default function Carrier() {
         ))}
       </div>
     </section>
+
+    <BlogCard/>
+  </div>
   );
 }

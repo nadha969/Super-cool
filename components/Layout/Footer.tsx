@@ -62,12 +62,12 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4 text-gray-900">Brands</h3>
             <ul className="space-y-3 text-gray-600">
-              <li><Link href="/carrier">Carrier</Link></li>
-              <li><Link href="/daikin">Daikin</Link></li>
-              <li><Link href="/midea">Midea</Link></li>
-              <li><Link href="/supergeneral">Super General</Link></li>
-              <li><Link href="/general">O General</Link></li>
-              <li><Link href="/diakool">Diakool</Link></li>
+              <li><Link href="/brands/carrier">Carrier</Link></li>
+              <li><Link href="/brands/daikin">Daikin</Link></li>
+              <li><Link href="/brands/midea">Midea</Link></li>
+              <li><Link href="/brands/supergeneral">Super General</Link></li>
+              <li><Link href="/brands/general">O General</Link></li>
+              <li><Link href="/brands/tcl">TCL</Link></li>
             </ul>
           </div>
 
