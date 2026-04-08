@@ -1,108 +1,141 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const products = [
   {
     id: "1",
-    name: "Carrier Floor Standing Split AC 4.0 Ton",
-    brand: "Carrier",
-    price: 120000,
+    name: "Carrier Wall Split AC",
+    brand: "carrier",
+    category: "wall-split",
+    price: 35000,
+    originalPrice: 38000,
     image: "/assets/ac1.png",
+    features: "Rotary Compressor",
+    btu: "12,000 BTU",
   },
   {
     id: "2",
-    name: "Carrier Floor Standing Split AC 5.0 Ton",
-    brand: "Carrier",
-    price: 150000,
+    name: "Carrier Floor Standing AC",
+    brand: "carrier",
+    category: "floor-standing",
+    price: 120000,
+    originalPrice: 125000,
     image: "/assets/ac2.png",
+    features: "Rotary Compressor",
+    btu: "24,000 BTU",
+  },
+  {
+    id: "3",
+    name: "Carrier Ducted AC",
+    brand: "carrier",
+    category: "ducted",
+    price: 150000,
+    originalPrice: 155000,
+    image: "/assets/ac2.png",
+    features: "Rotary Compressor",
+    btu: "36,000 BTU",
   },
 ];
 
 export default function Carriercategory({ brand, category }: any) {
   const [selectedBrand, setSelectedBrand] = useState("");
 
+  // ✅ FILTER
+  const filteredProducts = products.filter(
+    (p) => p.brand === brand && p.category === category
+  );
+
   return (
-    <div className="px-6 lg:px-16 py-10 bg-gray-50 min-h-screen">
-      
-      {/* 🔹 Title */}
-      <h1 className="text-3xl font-bold text-center mb-8 capitalize">
+    <div className="min-h-screen bg-gray-50 px-6 lg:px-16 py-10">
+
+      {/* Title */}
+      <h1 className="text-3xl font-bold text-center mb-10 capitalize">
         {brand} {category.replace("-", " ")} AC
       </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        
-        {/* 🔹 Sidebar Filter */}
-        <div className="bg-white p-6 rounded-2xl border h-fit">
-          <h2 className="text-lg font-semibold mb-4">Filter</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-          <div className="mb-6">
-            <h3 className="font-medium mb-2">Brands</h3>
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                onChange={() => setSelectedBrand("Carrier")}
-              />
-              Carrier
-            </label>
-          </div>
+        {/* Sidebar */}
+     
 
-          <div>
-            <h3 className="font-medium mb-2">Price</h3>
-            <p className="text-sm text-gray-500">Coming soon...</p>
-          </div>
-        </div>
-
-        {/* 🔹 Products Section */}
+        {/* Product Grid */}
         <div className="lg:col-span-3">
-          
-          <div className="flex justify-between items-center mb-6">
-            <p className="text-gray-600">
-              {products.length} Products
-            </p>
 
-            <select className="border px-3 py-2 rounded-lg text-sm">
-              <option>Sort by: Featured</option>
-              <option>Price Low to High</option>
-              <option>Price High to Low</option>
-            </select>
-          </div>
+          <p className="mb-6 text-gray-600">
+            {filteredProducts.length} Products
+          </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-2xl border p-4 hover:shadow-md transition"
+                className="bg-white rounded-lg shadow-sm border overflow-hidden flex flex-col"
               >
-                <div className="relative w-full h-48 mb-4">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-contain"
-                  />
+                {/* Image */}
+                <div className="relative p-6">
+                  <span className="absolute top-3 right-3 bg-cyan-500 text-white text-xs px-2 py-1 rounded-full">
+                    Sale
+                  </span>
+
+                  <div className="relative w-full h-40">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
 
-                <h2 className="font-semibold text-gray-800 mb-1">
-                  {product.name}
-                </h2>
+                {/* Content */}
+                <div className="p-4 flex flex-col flex-grow">
 
-                <p className="text-sm text-gray-500 mb-2">
-                  {product.brand}
-                </p>
+                  <h3 className="font-bold text-lg mb-1">
+                    {product.name}
+                  </h3>
 
-                <p className="font-bold text-lg text-blue-600">
-                  ₹{product.price}
-                </p>
+                  <p className="text-xs text-gray-500 mb-3 uppercase">
+                    {product.brand}
+                  </p>
 
-                <button className="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg text-sm hover:bg-blue-700">
-                  View Details
-                </button>
+                  <div className="text-sm text-gray-600 mb-4">
+                    <p>{product.features}</p>
+                    <p>{product.btu}</p>
+                  </div>
+
+                  <div className="mt-auto">
+                    <div className="flex gap-2 items-center mb-4">
+                      <span className="text-lg font-bold text-blue-600">
+                        ₹{product.price}
+                      </span>
+                      <span className="text-sm line-through text-gray-400">
+                        ₹{product.originalPrice}
+                      </span>
+                    </div>
+
+                    {/* ✅ LINK TO DETAIL PAGE */}
+                    <Link
+                      href={`/brands/${brand}/${category}/${product.id}`}
+                      className="block text-center bg-[#1a2b6d] text-white py-2 rounded-full hover:bg-[#121e4d]"
+                    >
+                      View Details
+                    </Link>
+                  </div>
+
+                </div>
               </div>
             ))}
-          </div>
 
+            {/* Empty */}
+            {filteredProducts.length === 0 && (
+              <p>No products found</p>
+            )}
+
+          </div>
         </div>
       </div>
     </div>

@@ -13,19 +13,19 @@ const collections: Collection[] = [
     title: "Carrier Wall Split Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/carrier/carrier-wall-split",
+   href: "/brands/carrier/wall-split"
   },
   {
     title: "Carrier Floor Standing AC Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/carrier/carrier-floor-standing",
+    href: "/brands/carrier/floor-standing",
   },
   {
     title: "Carrier Ducted AC Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/carrier/carrier-ducted",
+    href: "/brands/carrier/ducted",
   },
 ];
 
