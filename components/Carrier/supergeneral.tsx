@@ -1,65 +1,75 @@
 import Image from "next/image";
+import Link from "next/link";
 import BlogCard from "../Home/Insight";
-export default function Supergeneral(){
-    return(
-            <div>
-                <main className="pt-30 flex-1">
-                 <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
-                 Super General Air Conditioners Collection 
-                 </h1>
-               </main>
-              <section className="max-w-7xl mx-auto px-4 py-12">
-                
-                {/* Description */}
-                <div className="pb-10">
-                  <p className="text-center text-lg  leading-relaxed max-w-5xl mx-auto">
-                  Super General Air Conditioning Systems provide dependable cooling performance for UAE
-                   homes and businesses. Featuring reliable compressor technology, eco-friendly R-410A 
-                   refrigerant, and efficient operation, these durable units include window, split, and
-                    portable systems. Designed for residential and light commercial applications, 
-                    Super General AC units deliver consistent cooling with solid energy efficiency, 
-                    making them suitable for apartments, villas, and offices across the UAE
-                  </p>
-                </div>
-        
-                {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-                  {/* Card 1 */}
-                  <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                    <div className="flex justify-center">
-                      <Image
-                        src="https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp" 
-                        alt="Wall Split AC"
-                        width={400}
-                        height={250}
-                        className="object-contain"
-                      />
-                    </div>
-                    <h3 className="text-center mt-6 font-semibold text-lg">
-                     Super General Wall Split AC Collection
-                    </h3>
-                  </div>
-        
-                  {/* Card 2 */}
-                  <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                    <div className="flex justify-center">
-                      <Image
-                        src="/images/ducted-ac.png"
-                        alt="Ducted AC"
-                        width={400}
-                        height={250}
-                        className="object-contain"
-                      />
-                    </div>
-                    <h3 className="text-center mt-6 font-semibold text-lg">
-                      Super General Ducted AC Collection
-                    </h3>
-                  </div>
-        
-                </div>
-              </section>
-              <BlogCard/>
-            </div>
-    )
+
+interface Collection {
+  title: string;
+  imageSrc: string;
+  href: string;
+}
+
+const collections: Collection[] = [
+  {
+    title: "Super General Wall Split AC Collection",
+    imageSrc: "https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp",
+    href: "/brands/supergeneral/wall-split",
+  },
+  {
+    title: "Super General Ducted AC Collection",
+    imageSrc: "/images/ducted-ac.png",
+    href: "/brands/supergeneral/ducted",
+  },
+];
+
+export default function SuperGeneral() {
+  return (
+    <div>
+      <div className="pt-30 flex-1">
+        <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
+          Super General Air Conditioners Collection
+        </h1>
+      </div>
+
+      <section className="max-w-7xl mx-auto px-4 py-12">
+        {/* Description */}
+        <div className="pb-10">
+          <p className="text-center text-lg leading-relaxed max-w-5xl mx-auto">
+            Super General Air Conditioning Systems provide dependable cooling performance for UAE
+            homes and businesses. Featuring reliable compressor technology, eco-friendly R-410A 
+            refrigerant, and efficient operation, these durable units include window, split, and
+            portable systems. Designed for residential and light commercial applications, 
+            Super General AC units deliver consistent cooling with solid energy efficiency, 
+            making them suitable for apartments, villas, and offices across the UAE.
+          </p>
+        </div>
+
+        {/* Grid - Uses md:grid-cols-2 since you have two items */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {collections.map((item, index) => (
+            <Link
+              key={index}
+              href={item.href}
+              className="group border-2 border-[#ebebebfd] rounded-sm p-6 flex flex-col items-center justify-between bg-white
+              transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:border-transparent"
+            >
+              <div className="relative w-full h-64 mb-6 overflow-hidden">
+                <Image
+                  src={item.imageSrc}
+                  alt={item.title}
+                  fill
+                  className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
+
+              <h3 className="text-center font-bold text-[#1a1a1a] text-lg uppercase tracking-tight transition-colors">
+                {item.title}
+              </h3>
+            </Link>
+          ))}
+        </div>
+      </section>
+      
+      <BlogCard />
+    </div>
+  );
 }

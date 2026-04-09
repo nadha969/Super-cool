@@ -12,19 +12,19 @@ const collections: Collection[] = [
     title: "O General Wall Split Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/carrier-wall-split",
+    href: "/brands/general/wall-split",
   },
   {
     title: "O General Standing AC Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/carrier-floor-standing",
+    href: "/brands/general/floor-standing",
   },
   {
     title: "O General Ducted AC Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/carrier-ducted",
+    href: "/brands/general/ducted",
   },
 ];
 

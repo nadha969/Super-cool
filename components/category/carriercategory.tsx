@@ -12,7 +12,7 @@ const products = [
     category: "wall-split",
     price: 35000,
     originalPrice: 38000,
-    image: "/assets/ac1.png",
+    image: "https://tse2.mm.bing.net/th/id/OIP.6J0LHQVqekI5oYtJFv4BPQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
     features: "Rotary Compressor",
     btu: "12,000 BTU",
   },
@@ -23,7 +23,7 @@ const products = [
     category: "floor-standing",
     price: 120000,
     originalPrice: 125000,
-    image: "/assets/ac2.png",
+    image: "https://tse4.mm.bing.net/th/id/OIP.puOtPAYU2LV1KM0AlVTHFwHaFz?rs=1&pid=ImgDetMain&o=7&rm=3",
     features: "Rotary Compressor",
     btu: "24,000 BTU",
   },
@@ -34,7 +34,7 @@ const products = [
     category: "ducted",
     price: 150000,
     originalPrice: 155000,
-    image: "/assets/ac2.png",
+    image: "https://tse3.mm.bing.net/th/id/OIP.BkPqnk7Ybf9fdtuZZxpnJAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
     features: "Rotary Compressor",
     btu: "36,000 BTU",
   },
@@ -52,7 +52,7 @@ export default function Carriercategory({ brand, category }: any) {
     <div className="min-h-screen bg-gray-50 px-6 lg:px-16 py-10">
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-center mb-10 capitalize">
+      <h1 className="text-3xl font-bold text-center mb-10 capitalize mt-25">
         {brand} {category.replace("-", " ")} AC
       </h1>
 
@@ -63,11 +63,6 @@ export default function Carriercategory({ brand, category }: any) {
 
         {/* Product Grid */}
         <div className="lg:col-span-3">
-
-          <p className="mb-6 text-gray-600">
-            {filteredProducts.length} Products
-          </p>
-
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
             {filteredProducts.map((product) => (
@@ -108,14 +103,7 @@ export default function Carriercategory({ brand, category }: any) {
                   </div>
 
                   <div className="mt-auto">
-                    <div className="flex gap-2 items-center mb-4">
-                      <span className="text-lg font-bold text-blue-600">
-                        ₹{product.price}
-                      </span>
-                      <span className="text-sm line-through text-gray-400">
-                        ₹{product.originalPrice}
-                      </span>
-                    </div>
+                  
 
                     {/* ✅ LINK TO DETAIL PAGE */}
                     <Link

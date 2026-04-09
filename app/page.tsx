@@ -8,7 +8,6 @@ import BlogCard from "@/components/Home/Insight";
 export default function Home() {
   return (
   <div>
-    <Header/>
     <div className="mt-20">
        <Image
           src="https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp?v=1750079193&width=3840"
@@ -21,7 +20,6 @@ export default function Home() {
     <Brands/>
     <Model/>
     <BlogCard/>
-    <Footer/>
   </div>
   );
 }

@@ -13,19 +13,19 @@ const collections: Collection[] = [
     title: "Midea Wall Split Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/midea-wall-split",
+    href: "/brands/midea/wall-split",
   },
   {
     title: "Midea Floor Standing AC Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/midea-floor-standing",
+    href: "/brands/midea/floor-standing",
   },
   {
     title: "Midea Ducted AC Collection",
     imageSrc:
       "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/collections/midea-ducted",
+    href: "/brands/midea/ducted",
   },
 ];
 
@@ -33,7 +33,7 @@ export default function Midea() {
   return (
    <div>
      <main className="pt-30 flex-1">
-          <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
+          <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10 ">
           Midea Air Conditioners Collection 
           </h1>
         </main>
