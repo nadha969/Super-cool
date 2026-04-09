@@ -15,7 +15,7 @@ export default function Footer() {
           {/* Logo + Contact */}
           <div className="space-y-4">
             <Image
-              src="https://shop.supercooluae.com/cdn/shop/files/Super_Cool_Ai_Conditioning_Trading_LLC.png?v=1747037695&width=600"
+              src="/logo/acmartbg.png"
               alt="Super Cool"
               width={150}
               height={60}

@@ -22,13 +22,13 @@ export default function Header() {
 
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Image
-              src="https://shop.supercooluae.com/cdn/shop/files/Super_Cool_Ai_Conditioning_Trading_LLC.png?v=1747037695&width=600"
-              alt="Super Cool"
-              width={140}
-              height={40}
-              className="w-[110px] md:w-[140px]"
-            />
+           <Image
+                  src="/logo/acmartbg.png"
+                  alt="Ac mart"
+                  width={80}
+                  height={20}
+                  className="w-[30px] md:w-[100px]"
+                />
           </div>
 
           {/* Desktop Navigation */}
