@@ -104,12 +104,10 @@ export default function Carriercategory({ brand, category }: any) {
 
                   <div className="mt-auto">
                   
-
-                    {/* ✅ LINK TO DETAIL PAGE */}
                     <Link
                       href={`/brands/${brand}/${category}/${product.id}`}
                       className="block text-center bg-[#1a2b6d] text-white py-2 rounded-full hover:bg-[#121e4d]"
-                    >
+>
                       View Details
                     </Link>
                   </div>
