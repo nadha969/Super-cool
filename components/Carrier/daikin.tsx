@@ -1,8 +1,11 @@
 import Image from "next/image";
+import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
 
 export default function Daikin() {
   return (
     <div>
+      <Header/>
        <main className="pt-30 flex-1">
           <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
             Daikin Air Conditioners Collection
@@ -28,7 +31,7 @@ export default function Daikin() {
           <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
             <div className="flex justify-center">
               <Image
-                src="https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp" 
+                src="https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" 
                 alt="Wall Split AC"
                 width={400}
                 height={250}
@@ -44,7 +47,7 @@ export default function Daikin() {
           <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
             <div className="flex justify-center">
               <Image
-                src="/images/ducted-ac.png"
+                src="https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3"
                 alt="Ducted AC"
                 width={400}
                 height={250}
@@ -58,6 +61,7 @@ export default function Daikin() {
 
         </div>
       </section>
+      <Footer/>
     </div>
   );
 }

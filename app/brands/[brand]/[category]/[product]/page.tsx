@@ -1,3 +1,5 @@
+import Footer from "@/components/Layout/Footer";
+import Header from "@/components/Layout/Header";
 import Image from "next/image";
 
 const products = [
@@ -62,7 +64,9 @@ export default async function ProductPage({ params }: any) {
   if (!item) return <div>Product not found</div>;
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10 pt-40">
+  <div>
+    <Header/>
+      <div className="max-w-7xl mx-auto px-6 py-10 pt-40">
       
       <div className="grid md:grid-cols-2 gap-10">
         
@@ -126,5 +130,7 @@ export default async function ProductPage({ params }: any) {
         </div>
       </div>
     </div>
+    <Footer/>
+  </div>
   );
 }

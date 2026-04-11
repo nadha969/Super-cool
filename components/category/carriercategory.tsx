@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Footer from "../Layout/Footer";
+import Header from "../Layout/Header";
 
 const products = [
   {
@@ -49,7 +51,9 @@ export default function Carriercategory({ brand, category }: any) {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 px-6 lg:px-16 py-10">
+<div>
+  <Header/>
+      <div className="min-h-screen bg-gray-50 px-6 lg:px-16 py-10">
 
       {/* Title */}
       <h1 className="text-3xl font-bold text-center mb-10 capitalize mt-25">
@@ -68,7 +72,7 @@ export default function Carriercategory({ brand, category }: any) {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-lg shadow-sm border overflow-hidden flex flex-col"
+                className="bg-white rounded-lg shadow-sm  overflow-hidden flex flex-col"
               >
                 {/* Image */}
                 <div className="relative p-6">
@@ -125,5 +129,7 @@ export default function Carriercategory({ brand, category }: any) {
         </div>
       </div>
     </div>
+    <Footer/>
+</div>
   );
 }

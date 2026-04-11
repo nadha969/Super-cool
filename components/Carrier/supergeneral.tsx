@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import BlogCard from "../Home/Insight";
+import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
 
 interface Collection {
   title: string;
@@ -11,12 +13,12 @@ interface Collection {
 const collections: Collection[] = [
   {
     title: "Super General Wall Split AC Collection",
-    imageSrc: "https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp",
+    imageSrc: "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
     href: "/brands/supergeneral/wall-split",
   },
   {
     title: "Super General Ducted AC Collection",
-    imageSrc: "/images/ducted-ac.png",
+    imageSrc: "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
     href: "/brands/supergeneral/ducted",
   },
 ];
@@ -24,6 +26,7 @@ const collections: Collection[] = [
 export default function SuperGeneral() {
   return (
     <div>
+      <Header/>
       <div className="pt-30 flex-1">
         <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
           Super General Air Conditioners Collection
@@ -70,6 +73,7 @@ export default function SuperGeneral() {
       </section>
       
       <BlogCard />
+      <Footer/>
     </div>
   );
 }

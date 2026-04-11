@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import BlogCard from "../Home/Insight";
+import Footer from "../Layout/Footer";
+import Header from "../Layout/Header";  
 interface Collection {
   title: string;
   imageSrc: string;
@@ -32,6 +34,7 @@ export default function OGeneral()
  {    
     return(
         <div>
+          <Header/>
                <main className="pt-30 flex-1">
           <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
        O General Air Conditioners Collection 
@@ -78,6 +81,7 @@ export default function OGeneral()
       </div>
     </section>
     <BlogCard/>
+    <Footer/>
         </div>
     )
 }

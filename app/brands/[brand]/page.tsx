@@ -1,5 +1,6 @@
 import Carrier from "@/components/Carrier/carrier";
 import Daikin from "@/components/Carrier/daikin";
+import TCLCollection from "@/components/Carrier/diakool";
 import DiakoolCollection from "@/components/Carrier/diakool";
 import Midea from "@/components/Carrier/midea";
 import OGeneral from "@/components/Carrier/o-general";
@@ -24,7 +25,7 @@ export default async function BrandPage({ params }: any) {
   }
     
    if (brand === "tcl") {
-    return <DiakoolCollection />;
+    return <TCLCollection />;
   }
 
    if (brand === "supergeneral") {
