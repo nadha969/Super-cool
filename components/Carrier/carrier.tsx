@@ -3,77 +3,67 @@ import Link from "next/link";
 import BlogCard from "../Home/Insight";
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
+import { BASE_URL } from "@/lib/api";
 
-interface Collection {
-  title: string;
-  imageSrc: string;
-  href: string;
+async function getProducts() {
+  const res = await fetch(
+    `${BASE_URL}/api/brands/carrier`,
+    { cache: "no-store" }
+  );
+
+  return res.json();
 }
 
-const collections: Collection[] = [
-  {
-    title: "Carrier Wall Split Collection",
-    imageSrc:
-      "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-   href: "/brands/carrier/wall-split"
-  },
-  {
-    title: "Carrier Floor Standing AC Collection",
-    imageSrc:
-      "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/brands/carrier/floor-standing",
-  },
-  {
-    title: "Carrier Ducted AC Collection",
-    imageSrc:
-      "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    href: "/brands/carrier/ducted",
-  },
-];
+export default async function Carrier() {
+  const products = await getProducts();
 
-export default function Carrier() {
+  const categories = [
+    ...new Set(products.map((item: any) => item.category)),
+  ];
+
   return (
-    
-  <div>
-    <Header/>
-     <main className="pt-30 flex-1">
-    <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
-      Carrier Air Conditioners Collection
-    </h1>
-  </main>
+    <div>
+      <Header />
+
+      <main className="pt-30 flex-1">
+        <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
+          Carrier Air Conditioners Collection
+        </h1>
+      </main>
+
       <section className="max-w-7xl mx-auto px-4 py-12">
-     
         <div className="pb-10">
-
-            <p className="text-center text-lg">Carrier Air Conditioners deliver reliable cooling for UAE homes and businesses. Featuring inverter technology, corrosion-resistant components, and high-temperature operation, these energy-efficient systems include split, ducted, cassette, and VRF units. Ideal for both residential and commercial use, Carrier AC units reduce energy costs while maintaining optimal comfort in extreme climates</p>
+          <p className="text-center text-lg">
+            Carrier Air Conditioners deliver reliable cooling...
+          </p>
         </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {collections.map((item, index) => (
-          <Link
-            key={index}
-            href={item.href}
-            className="group border-2 border-[#82C341] rounded-sm p-6 flex flex-col items-center justify-between bg-white
-            transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:border-transparent"
-          >
-            <div className="relative w-full h-64 mb-6 overflow-hidden">
-              <Image
-                src={item.imageSrc}
-                alt={item.title}
-                fill
-                className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
-              />
-            </div>
 
-            <h3 className="text-center font-bold text-[#1a1a1a] text-lg uppercase tracking-tight group-hover:text-[#82C341] transition-colors">
-              {item.title}
-            </h3>
-          </Link>
-        ))}
-      </div>
-    </section>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {categories.map((cat: any, index: number) => (
+            <Link
+              key={index}
+              href={`/brands/carrier/${cat}`}
+              className="group border-2 border-[#82C341] rounded-sm p-6 flex flex-col items-center justify-between bg-white hover:shadow-2xl"
+            >
+              <div className="relative w-full h-64 mb-6 overflow-hidden">
+                <Image
+                  src={products[0]?.image || "/placeholder.jpg"}
+                  alt={cat}
+                  fill
+                  className="object-contain p-4"
+                />
+              </div>
 
-    <BlogCard/>
-    <Footer/>
-  </div>
+              <h3 className="text-center font-bold text-lg uppercase">
+                {cat}
+              </h3>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <BlogCard />
+      <Footer />
+    </div>
   );
 }

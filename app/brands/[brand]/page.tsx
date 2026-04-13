@@ -1,7 +1,6 @@
 import Carrier from "@/components/Carrier/carrier";
 import Daikin from "@/components/Carrier/daikin";
 import TCLCollection from "@/components/Carrier/diakool";
-import DiakoolCollection from "@/components/Carrier/diakool";
 import Midea from "@/components/Carrier/midea";
 import OGeneral from "@/components/Carrier/o-general";
 import Supergeneral from "@/components/Carrier/supergeneral";
