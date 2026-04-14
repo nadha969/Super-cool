@@ -58,7 +58,7 @@ export default function BlogCard() {
                   {post.title}
                 </h3>
 
-                <p className="text-xs uppercase text-gray-500 mb-4">
+                <p className="text-xs uppercase text-gray-600 mb-4">
                   {post.date}
                 </p>
 
