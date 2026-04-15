@@ -26,7 +26,7 @@ export default function Header() {
                 src="/logo/acmartbg.png"
                 alt="Ac mart"
                 width={130}
-                height={60}
+                height={50}
                 className="h-[42px] w-auto sm:h-[50px] md:h-[55px] object-contain"
                 priority
               />
