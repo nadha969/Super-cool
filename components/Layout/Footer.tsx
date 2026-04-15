@@ -50,11 +50,11 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4 text-gray-900">Collections</h3>
             <ul className="space-y-3 text-gray-600">
-              <li><Link href="#">Wall Split</Link></li>
-              <li><Link href="#">Window AC</Link></li>
-              <li><Link href="#">Floor Standing</Link></li>
-              <li><Link href="#">Cassette AC</Link></li>
-              <li><Link href="#">Ducted Units</Link></li>
+              <li><Link href="/categories/wall-split">Wall Split</Link></li>
+              <li><Link href="/categories/window-ac">Window AC</Link></li>
+              <li><Link href="/categories/floor-stand">Floor Standing</Link></li>
+              <li><Link href="/categories/cassette-ac">Cassette AC</Link></li>
+              <li><Link href="/categories/ducted-units">Ducted Units</Link></li>
             </ul>
           </div>
 

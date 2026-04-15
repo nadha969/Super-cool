@@ -10,30 +10,34 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevents page refresh
-    setLoading(true);
+ const handleLogin = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      const res = await fetch("/api/test/admin/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+  try {
+    const res = await fetch("/api/test/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (res.ok) {
-        router.push("/admin/dashboard");
-      } else {
-        alert(data.message || "Invalid credentials");
-      }
-    } catch (error) {
-      alert("An error occurred. Please try again.");
-    } finally {
-      setLoading(false);
+    if (res.ok) {
+      // Save Access Token
+      localStorage.setItem("accessToken", data.accessToken);
+
+      // Redirect
+      router.push("/admin/dashboard");
+    } else {
+      alert(data.message || "Invalid credentials");
     }
-  };
+  } catch (error) {
+    alert("An error occurred. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">

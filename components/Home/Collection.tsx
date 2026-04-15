@@ -20,7 +20,7 @@ export default function Collection() {
     },
     {
       title: "CASSETTE AC",
-      slug: "cassette",
+      slug: "casette",
       img: "https://www.generalcool.ae/wp-content/uploads/2023/08/Cassette.jpg",
     },
     {
