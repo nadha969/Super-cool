@@ -15,23 +15,13 @@ const nextConfig = {
         protocol: "https",
         hostname: "i5.walmartimages.com",
       },
+
+      // Bing images (IMPORTANT)
       {
         protocol: "https",
-        hostname: "tse1.mm.bing.net",
+        hostname: "th.bing.com",
       },
       {
-        protocol: "https",
-        hostname: "tse3.mm.bing.net",
-      },
-      {
-        protocol: "https",
-        hostname: "tse4.mm.bing.net",
-      },
-      {
-        protocol: "https",
-        hostname: "www.generalcool.ae",
-      },
-        {
         protocol: "https",
         hostname: "tse1.mm.bing.net",
       },
@@ -41,7 +31,16 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "tse3.mm.bing.net",
+      },
+      {
+        protocol: "https",
         hostname: "tse4.mm.bing.net",
+      },
+
+      {
+        protocol: "https",
+        hostname: "www.generalcool.ae",
       },
       {
         protocol: "https",
