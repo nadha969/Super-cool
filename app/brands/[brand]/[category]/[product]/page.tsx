@@ -51,28 +51,29 @@ export default async function ProductPage({
               />
             </div>
           </div>
+<div>
+  <h1 className="text-3xl font-bold mb-4">
+    {item.name}
+  </h1>
 
-          <div>
-            <h1 className="text-3xl font-bold mb-4">
-              {item.name}
-            </h1>
+  <p className="text-blue-600 font-semibold mb-4 uppercase">
+    {item.brand}
+  </p>
 
-            <p className="text-blue-600 font-semibold mb-4 uppercase">
-              {item.brand}
-            </p>
+  <div className="text-gray-600 mb-6 space-y-4">
+    <p>{item.description?.paragraph1}</p>
 
-            <p className="text-gray-600 mb-6">
-              {item.description}
-            </p>
+    <p>{item.description?.paragraph2}</p>
 
-            <ul className="list-disc pl-5 space-y-2 text-gray-700">
-              {item.specs?.map(
-                (spec: string, i: number) => (
-                  <li key={i}>{spec}</li>
-                )
-              )}
-            </ul>
-          </div>
+    <ul className="list-disc pl-5 space-y-2 text-gray-700">
+      {item.description?.bullets?.map(
+        (point: string, i: number) => (
+          <li key={i}>{point}</li>
+        )
+      )}
+    </ul>
+  </div>
+</div>
         </div>
       </div>
 

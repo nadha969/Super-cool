@@ -5,13 +5,18 @@ import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import { BASE_URL } from "@/lib/api";
 
-// ✅ Product type
 type Product = {
   category: string;
   image?: string;
 };
 
-// ✅ Fetch products
+type Category = {
+  name: string;
+  slug: string;
+  image?: string;
+};
+
+// Fetch products
 async function getProducts(): Promise<Product[]> {
   const res = await fetch(`${BASE_URL}/api/brands/carrier`, {
     cache: "no-store",
@@ -24,10 +29,23 @@ async function getProducts(): Promise<Product[]> {
   return res.json();
 }
 
+// Fetch categories
+async function getCategories(): Promise<Category[]> {
+  const res = await fetch(`${BASE_URL}/api/categories`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error(`API Error: ${res.status}`);
+  }
+
+  return res.json();
+}
+
 export default async function Carrier() {
   const products = await getProducts();
+  const allCategories = await getCategories();
 
-  // ✅ Empty state
   if (!products || products.length === 0) {
     return (
       <div>
@@ -40,16 +58,22 @@ export default async function Carrier() {
     );
   }
 
-  // ✅ Unique categories
-  const categories = [...new Set(products.map((item) => item.category))];
+  // Unique product categories only
+  const usedCategories = [
+    ...new Set(products.map((item) => item.category)),
+  ];
 
-  // ✅ Map category → image
-  const categoryData = categories.map((cat) => {
-    const product = products.find((p) => p.category === cat);
+  // Match with category collection
+  const categoryData = usedCategories.map((cat) => {
+    const matched = allCategories.find(
+      (c) => c.slug === cat
+    );
 
     return {
-      name: cat,
-      image: product?.image || "/placeholder.jpg",
+      name: matched?.name || cat,
+      slug: cat,
+      image:
+        matched?.image || "/placeholder.jpg",
     };
   });
 
@@ -57,38 +81,48 @@ export default async function Carrier() {
     <div>
       <Header />
 
-      {/* HERO */}
+      {/* Hero */}
       <main className="pt-30 flex-1">
         <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
           Carrier Air Conditioners Collection
         </h1>
       </main>
 
-      {/* CATEGORY SECTION */}
+      {/* Categories */}
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="pb-10">
-          <p className="text-center text-lg">
-            Carrier Air Conditioners deliver reliable cooling...
+          <p className="text-center text-lg text-gray-600">
+            Carrier Air Conditioners deliver
+            reliable cooling solutions with
+            advanced technology, energy
+            efficiency, and premium comfort for
+            homes and businesses.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {categoryData.map((cat, index) => (
             <Link
               key={index}
-              href={`/brands/carrier/${cat.name}`}
-              className="group border-2 border-[#82C341] rounded-sm p-6 flex flex-col items-center justify-between bg-white hover:shadow-2xl"
+              href={`/brands/carrier/${cat.slug}`}
+              className="group border border-gray-200 rounded-2xl p-6 bg-white shadow-sm hover:shadow-xl transition-all duration-300"
             >
-              <div className="relative w-full h-64 mb-6 overflow-hidden">
-                <Image
-                  src={cat.image}
-                  alt={cat.name}
-                  fill
-                  className="object-contain p-4"
-                />
+              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50">
+      <Image
+  src={
+    cat.image
+      ? cat.image.startsWith("/")
+        ? cat.image
+        : `/categories/${cat.image}`
+      : "/placeholder.jpg"
+  }
+  alt={cat.name}
+  fill
+  className="object-contain p-4"
+/>
               </div>
 
-              <h3 className="text-center font-bold text-lg uppercase">
+              <h3 className="text-center font-bold text-lg uppercase text-gray-800">
                 {cat.name}
               </h3>
             </Link>
