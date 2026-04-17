@@ -195,7 +195,7 @@ refresh?.();  }, []);
   <button
     onClick={() => deleteCategory(item._id)}
     disabled={deleting === item._id}
-    className="bg-red-500 hover:bg-red-600 text-red-500 p-2 rounded-lg flex items-center justify-center cursor-pointer"
+    className=" text-red-500 p-2 rounded-lg flex items-center justify-center cursor-pointer"
   >
     <Trash2 className="w-2 h-2" />
   </button>
