@@ -197,7 +197,7 @@ refresh?.();  }, []);
     disabled={deleting === item._id}
     className=" text-red-500 p-2 rounded-lg flex items-center justify-center cursor-pointer"
   >
-    <Trash2 className="w-2 h-2" />
+    <Trash2 className="w-4 h-4" />
   </button>
 </div>
             </div>
