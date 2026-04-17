@@ -6,7 +6,7 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 
 
-export default function Categories() {
+export default function Categories({ refresh }: any) {
   const [name, setName] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
@@ -29,8 +29,8 @@ export default function Categories() {
   };
 
   useEffect(() => {
-    fetchCategories();
-  }, []);
+fetchCategories();
+refresh?.();  }, []);
 
   // Add Category
   const save = async () => {
@@ -90,6 +90,7 @@ export default function Categories() {
 
       if (res.ok) {
         fetchCategories();
+        refresh?.();
         toast.success("Deleted ✅");
       } else {
         toast.error("Delete failed");
