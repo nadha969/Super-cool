@@ -108,10 +108,12 @@ export default async function Carrier() {
               className="group border border-gray-200 rounded-2xl p-6 bg-white shadow-sm hover:shadow-xl transition-all duration-300"
             >
               <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50">
-      <Image
+     <Image
   src={
     cat.image
-      ? cat.image.startsWith("/")
+      ? cat.image.startsWith("http")
+        ? cat.image
+        : cat.image.startsWith("/")
         ? cat.image
         : `/categories/${cat.image}`
       : "/placeholder.jpg"

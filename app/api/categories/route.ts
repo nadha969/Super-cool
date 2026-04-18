@@ -1,8 +1,13 @@
 import { connectDB } from "@/lib/mongodb";
 import Category from "@/model/category";
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 // GET
 export async function GET() {
@@ -40,18 +45,13 @@ export async function POST(req: Request) {
       const bytes = await image.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
-      const fileName =
-        Date.now() + "-" + image.name.replaceAll(" ", "-");
+      const base64 = `data:${image.type};base64,${buffer.toString("base64")}`;
 
-      const uploadPath = path.join(
-        process.cwd(),
-        "public/categories",
-        fileName
-      );
+      const uploadRes = await cloudinary.uploader.upload(base64, {
+        folder: "categories",
+      });
 
-      fs.writeFileSync(uploadPath, buffer);
-
-      imageUrl = `/categories/${fileName}`;
+      imageUrl = uploadRes.secure_url;
     }
 
     const category = await Category.create({
@@ -85,28 +85,6 @@ export async function DELETE(req: Request) {
         { message: "Category ID required" },
         { status: 400 }
       );
-    }
-
-    const category = await Category.findById(id);
-
-    if (!category) {
-      return NextResponse.json(
-        { message: "Category not found" },
-        { status: 404 }
-      );
-    }
-
-    // Delete image file
-    if (category.image) {
-      const imagePath = path.join(
-        process.cwd(),
-        "public",
-        category.image
-      );
-
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
-      }
     }
 
     await Category.findByIdAndDelete(id);

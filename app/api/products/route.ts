@@ -1,8 +1,13 @@
 import { connectDB } from "@/lib/mongodb";
 import Product from "@/model/product";
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(req: Request) {
   try {
@@ -23,23 +28,13 @@ export async function POST(req: Request) {
       const bytes = await file.arrayBuffer();
       const buffer = Buffer.from(bytes);
 
-      const fileName = Date.now() + "-" + file.name;
+      const base64 = `data:${file.type};base64,${buffer.toString("base64")}`;
 
-      const uploadPath = path.join(
-        process.cwd(),
-        "public/products"
-      );
+      const uploadRes = await cloudinary.uploader.upload(base64, {
+        folder: "products",
+      });
 
-      if (!fs.existsSync(uploadPath)) {
-        fs.mkdirSync(uploadPath, { recursive: true });
-      }
-
-      fs.writeFileSync(
-        path.join(uploadPath, fileName),
-        buffer
-      );
-
-      imageUrl = "/products/" + fileName;
+      imageUrl = uploadRes.secure_url;
     }
 
     const description = JSON.parse(descriptionRaw);
@@ -55,7 +50,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(product);
   } catch (error) {
-    console.log(error);
+    console.error("POST ERROR:", error);
 
     return NextResponse.json(
       { message: "Upload Error" },

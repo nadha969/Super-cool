@@ -12,6 +12,10 @@ const nextConfig = {
         hostname: "retail.mideasouthafrica.com",
       },
       {
+  protocol: "https",
+  hostname: "res.cloudinary.com",
+},
+      {
         protocol: "https",
         hostname: "i5.walmartimages.com",
       },

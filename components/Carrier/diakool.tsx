@@ -35,11 +35,11 @@ const TCLCollection = async () => {
                         Sale
                       </span>
 
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-auto object-contain"
-                      />
+                    <img
+  src={product.image || "/placeholder.jpg"}
+  alt={product.name}
+  className="w-full h-auto object-contain"
+/>
                     </div>
 
                     <div className="p-6 pt-0 flex flex-col flex-grow">

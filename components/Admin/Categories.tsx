@@ -175,17 +175,20 @@ refresh?.();  }, []);
               className="shadow p-4 bg-white shadow-sm"
             >
               <div className="relative w-full h-40 bg-gray-100  overflow-hidden">
-          <Image
-            src={
-              item.image
-                ? item.image.startsWith("/")
-                  ? item.image
-                  : `/categories/${item.image}`
-                : "/placeholder.jpg"
-            }
-            alt={item.name}
-            fill
-            className="w-100 h-50"/></div>
+           <Image
+    src={
+      item.image
+        ? item.image.startsWith("http")
+          ? item.image
+          : item.image.startsWith("/")
+          ? item.image
+          : `/categories/${item.image}`
+        : "/placeholder.jpg"
+    }
+    alt={item.name}
+    fill
+    className="object-contain"
+  /></div>
 
            <div className="flex items-center justify-between mt-3">
   <h3 className="font-semibold text-lg text-gray-800 truncate">
