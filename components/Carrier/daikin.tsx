@@ -48,22 +48,18 @@ export default async function Daikin() {
                 href={`/brands/daikin/${cat}`}
                 className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition"
               >
-                <div className="flex justify-center">
-                <Image
-  src={
-    products[0]?.image
-      ? products[0].image.startsWith("http")
-        ? products[0].image
-        : products[0].image.startsWith("/")
-        ? products[0].image
-        : `/products/${products[0].image}`
-      : "/placeholder.jpg"
-  }
-  alt={cat}
-  width={400}
-  height={250}
-  className="object-contain"
-/>
+                          <div className="flex justify-center">
+                            <Image
+            src={
+              products.find(
+                (item: any) => item.category === cat
+              )?.image || "/placeholder.jpg"
+            }
+            alt={cat}
+            width={400}
+            height={250}
+            className="object-contain"
+          />
                 </div>
 
                 <h3 className="text-center mt-6 font-semibold text-lg capitalize">

@@ -50,15 +50,16 @@ export default async function OGeneral() {
                 className="group border-2 border-[#ebebebfd] rounded-sm p-6 flex flex-col items-center justify-between bg-white transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2 hover:border-transparent"
               >
                 <div className="relative w-full h-64 mb-6 overflow-hidden">
-                  <Image
-                    src={
-                      products[0]?.image ||
-                      "/placeholder.jpg"
-                    }
-                    alt={cat}
-                    fill
-                    className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
-                  />
+                 <Image
+  src={
+    products.find(
+      (item: any) => item.category === cat
+    )?.image || "/placeholder.jpg"
+  }
+  alt={cat}
+  fill
+  className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
+/>
                 </div>
 
                 <h3 className="text-center font-bold text-[#1a1a1a] text-lg uppercase tracking-tight">
