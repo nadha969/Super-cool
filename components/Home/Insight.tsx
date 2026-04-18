@@ -48,6 +48,7 @@ export default function BlogCard() {
                   src={post.image}
                   alt={post.title}
                   fill
+                  unoptimized
                   className="object-cover group-hover:scale-105 transition duration-300"
                 />
               </div>

@@ -15,6 +15,7 @@ export default function Home() {
           alt="Wall Split Banner"
           width={1920}
           height={600}
+          unoptimized
           className="w-full h-auto" />
     </div>
     <Collection/>
