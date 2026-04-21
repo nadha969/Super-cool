@@ -8,7 +8,7 @@ const posts = [
     excerpt:
       "The compressor is the core of your air conditioning system. It circulates refrigerant between the indoor and outdoor coils, enabling heat transfer that keeps your home cool.",
     image:
-      "https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp",
+      "/logo/homeimage.jpeg",
     slug: "ac-compressor-work",
   },
   {
@@ -16,8 +16,7 @@ const posts = [
     date: "October 11, 2025",
     excerpt:
       "In large buildings across Dubai and the UAE, cooling needs go far beyond what standard split or DX systems can handle.",
-    image:
-      "https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp",
+    image:"/logo/homeimage.jpeg",
     slug: "carrier-guide",
   },
   {
@@ -26,7 +25,7 @@ const posts = [
     excerpt:
       "Dubai isn’t just about extreme heat, it’s also about unbearable humidity. Carrier systems are built for these conditions.",
     image:
-      "https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp",
+      "/logo/homeimage.jpeg",
     slug: "carrier-smart-choice",
   },
 ];

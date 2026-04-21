@@ -11,12 +11,12 @@ export default function Home() {
     <Header/>
     <div className="mt-20">
        <Image
-          src="https://shop.supercooluae.com/cdn/shop/files/Wall_Split_Banner_0e2238e5-55af-497a-b4f0-38dceb5275ae.webp?v=1750079193&width=3840"
+          src="/logo/homeimage.jpeg"
           alt="Wall Split Banner"
-          width={1920}
-          height={600}
+          width={400}
+          height={200}
           unoptimized
-          className="w-full h-auto" />
+          className="w-full " />
     </div>
     <Collection/>
     <Brands/>
