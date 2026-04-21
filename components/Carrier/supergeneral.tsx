@@ -87,7 +87,7 @@ export default async function SuperGeneral() {
               className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 p-6 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl active:scale-[0.98]"
             >
               {/* Animated Side Bar */}
-              <div className="absolute left-0 top-0 h-full w-0 bg-gradient-to-b from-blue-500 to-indigo-600 transition-all duration-500 group-hover:w-2"></div>
+              <div className="absolute left-0 top-0 h-full w-0 bg-gradient-to-b from-blue-500 to-[#05305C] transition-all duration-500 group-hover:w-2"></div>
 
               {/* Floating Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-indigo-50 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
@@ -111,12 +111,12 @@ export default async function SuperGeneral() {
               </div>
 
               {/* Title */}
-              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 tracking-tight transition-all duration-300 group-hover:text-blue-600">
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 tracking-tight transition-all duration-300 group-hover:text-[#05305C]">
                 {cat.name}
               </h3>
 
               {/* Bottom Animated Line */}
-              <div className="relative z-10 mx-auto mt-3 h-[2px] w-0 bg-blue-500 transition-all duration-500 group-hover:w-20"></div>
+              <div className="relative z-10 mx-auto mt-3 h-[2px] w-0 bg-[#05305C] transition-all duration-500 group-hover:w-20"></div>
             </Link>
           ))}
         </div>

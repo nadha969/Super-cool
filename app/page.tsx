@@ -14,9 +14,9 @@ export default function Home() {
           src="/logo/homeimage.jpeg"
           alt="Wall Split Banner"
           width={400}
-          height={200}
+          height={300}
           unoptimized
-          className="w-full " />
+          className="w-full sm:mt-30" />
     </div>
     <Collection/>
     <Brands/>

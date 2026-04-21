@@ -9,8 +9,7 @@ export default function Brands() {
     {
       name: "carrier",
       image:
-        "https://tse2.mm.bing.net/th/id/OIP.wwwr3EQLi6eZqaV2Br7HlAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
-    },
+          "/logo/carrierlogo.webp"    },
     {
       name: "general",
       image:

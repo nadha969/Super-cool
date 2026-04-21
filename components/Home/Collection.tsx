@@ -65,9 +65,9 @@ export default function Collection() {
           >
             <Link
               href={`/categories/${item.slug}`}
-              className="border-2 border-green-700 rounded-lg h-[260px] flex flex-col items-center justify-start p-3 hover:shadow-xl hover:-translate-y-2 transition duration-300 bg-white"
+              className="border-2 border-[#243f5a] rounded-lg h-[260px] flex flex-col items-center justify-start p-3 hover:shadow-xl hover:-translate-y-2 transition duration-300 bg-white"
             >
-              <h5 className="text-center pt-3 text-blue-900 font-semibold">
+              <h5 className="text-center pt-3 text-[#05305C] font-semibold">
                 {item.title}
               </h5>
 

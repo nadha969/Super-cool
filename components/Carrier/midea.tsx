@@ -108,12 +108,12 @@ export default async function Midea() {
               </div>
 
               {/* Title */}
-              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-indigo-600 transition-colors duration-300">
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-[#05305C] transition-colors duration-300">
                 {cat.name}
               </h3>
 
               {/* Bottom Line */}
-              <div className="relative z-10 mt-4 h-1 w-0 bg-indigo-600 mx-auto rounded-full group-hover:w-20 transition-all duration-500"></div>
+              <div className="relative z-10 mt-4 h-1 w-0 bg-[#05305C] mx-auto rounded-full group-hover:w-20 transition-all duration-500"></div>
             </Link>
           ))}
         </div>

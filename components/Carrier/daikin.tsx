@@ -100,12 +100,12 @@ export default async function Daikin() {
               </div>
 
               {/* Title */}
-              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-[#05305C] transition-colors duration-300">
                 {cat.name}
               </h3>
 
               {/* Bottom Border Animation */}
-              <div className="mt-4 h-0.5 w-0 bg-blue-600 mx-auto group-hover:w-24 transition-all duration-500"></div>
+              <div className="mt-4 h-0.5 w-0 bg-[#05305C] mx-auto group-hover:w-24 transition-all duration-500"></div>
             </Link>
           ))}
         </div>

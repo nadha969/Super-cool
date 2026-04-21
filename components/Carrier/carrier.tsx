@@ -124,12 +124,12 @@ export default async function Carrier() {
               </div>
 
               {/* Title */}
-              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-[#05305C] transition-colors duration-300">
                 {cat.name}
               </h3>
 
               {/* Bottom Line Animation */}
-              <div className="relative z-10 mt-4 h-1 w-0 bg-blue-600 mx-auto rounded-full group-hover:w-20 transition-all duration-500"></div>
+              <div className="relative z-10 mt-4 h-1 w-0 bg-[#05305C] mx-auto rounded-full group-hover:w-20 transition-all duration-500"></div>
             </Link>
           ))}
         </div>

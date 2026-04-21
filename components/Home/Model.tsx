@@ -27,7 +27,7 @@ export default function TrendingModels() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-10">
-          <p className="text-blue-600 font-semibold uppercase tracking-widest text-sm">
+          <p className="text-[#05305C] font-semibold uppercase tracking-widest text-sm">
             Featured Collection
           </p>
 
@@ -35,7 +35,7 @@ export default function TrendingModels() {
             Trending Models
           </h2>
 
-          <div className="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+          <div className="w-20 h-1 bg-[#102d4b] mx-auto mt-4 rounded-full"></div>
         </div>
 
         {/* Grid */}
@@ -70,7 +70,7 @@ export default function TrendingModels() {
                 </div>
 
                 <div className="p-5">
-                  <p className="text-xs uppercase text-blue-600 font-semibold">
+                  <p className="text-xs uppercase text-[#05305C] font-semibold">
                     {product.brand}
                   </p>
 
@@ -78,7 +78,7 @@ export default function TrendingModels() {
                     {product.name}
                   </h3>
 
-                  <h5 className="text-xl font-bold text-blue-600 mt-3">
+                  <h5 className="text-xl font-bold text-[#05305C] mt-3">
                     AED {product.price}
                   </h5>
                 </div>
@@ -88,8 +88,7 @@ export default function TrendingModels() {
               <div className="px-5 pb-5">
                 <Link
                   href={`/brands/${product.brand}/${product.category}/${product.slug}`}
-                  className="block w-full text-center bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 active:scale-95 transition"
-                >
+                  className="block w-full text-center bg-[#05305C] text-white py-3 rounded-xl font-semibold hover:bg-[#05305C]/90 active:scale-95 transition">
                   View Details
                 </Link>
               </div>

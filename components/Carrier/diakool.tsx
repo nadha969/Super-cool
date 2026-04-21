@@ -87,7 +87,7 @@ export default async function TCL() {
               className="group relative rounded-2xl bg-white p-6 shadow-sm border border-gray-200 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
             >
               {/* Animated top border */}
-              <div className="absolute top-0 left-0 h-1 w-0 bg-blue-600 group-hover:w-full transition-all duration-500"></div>
+              <div className="absolute top-0 left-0 h-1 w-0 bg-[#05305C] group-hover:w-full transition-all duration-500"></div>
 
               {/* Animated glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-sky-100 opacity-0 group-hover:opacity-100 transition duration-500"></div>
@@ -111,12 +111,12 @@ export default async function TCL() {
               </div>
 
               {/* Title */}
-              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-[#05305C] transition-colors duration-300">
                 {cat.name} COLLECTIONS
               </h3>
 
               {/* Arrow */}
-              <div className="relative z-10 mt-4 text-center text-blue-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-500">
+              <div className="relative z-10 mt-4 text-center text-[#05305C] opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-500">
                 →
               </div>
             </Link>
