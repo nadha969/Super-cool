@@ -21,16 +21,14 @@ export default function Footer() {
               height={60}
             />
 
+         
+
             <p className="text-gray-700 underline cursor-pointer">
-              04 328 1682
+              +971 569011041
             </p>
 
             <p className="text-gray-700 underline cursor-pointer">
-              0508766830
-            </p>
-
-            <p className="text-gray-700 underline cursor-pointer">
-              sales@supercooluae.com
+              sales@acmartuae.com
             </p>
           </div>
 
