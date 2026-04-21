@@ -18,6 +18,7 @@ export default function AddProduct({ brands, categories, refresh }: any) {
     name: "",
     brand: "",
     category: "",
+    price: "",
     paragraph1: "",
     paragraph2: "",
     bullets: [""],
@@ -60,6 +61,7 @@ export default function AddProduct({ brands, categories, refresh }: any) {
     formData.append("name", product.name);
     formData.append("brand", product.brand);
     formData.append("category", product.category);
+    formData.append("price", product.price);
     formData.append("slug", slug);
 
     formData.append(
@@ -86,6 +88,7 @@ export default function AddProduct({ brands, categories, refresh }: any) {
           name: "",
           brand: "",
           category: "",
+          price:"",
           paragraph1: "",
           paragraph2: "",
           bullets: [""],
@@ -203,6 +206,22 @@ export default function AddProduct({ brands, categories, refresh }: any) {
             </select>
           </div>
         </div>
+{/* Price */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-semibold text-slate-700">
+              ₹ Price
+            </label>
+
+            <input
+              type="number"
+              placeholder="Enter price"
+              value={product.price}
+              onChange={(e) =>
+                setProduct({ ...product, price: e.target.value })
+              }
+              className="w-full border border-slate-200 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
 
         {/* Paragraph 1 */}
         <div className="space-y-2">

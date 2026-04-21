@@ -60,9 +60,13 @@ const [categories, setCategories] = useState<any[]>([]);
           />
         )}
 
-        {tab === "products" && (
-          <ProductList products={products} />
-        )}
+       {tab === "products" && (
+  <ProductList
+    products={products}
+    brands={brands}
+    categories={categories}
+  />
+)}
 
         {tab === "add-product" && (
           <AddProduct
