@@ -75,7 +75,7 @@ export default function Footer() {
       </div>
 
       {/* Social Section */}
-      <div className="bg-blue-900 py-6">
+      <div className="bg-[#05305C] py-6">
         <div className="flex justify-center gap-6 text-white">
           <Facebook className="cursor-pointer hover:scale-110 transition" />
           <Instagram className="cursor-pointer hover:scale-110 transition" />
@@ -84,7 +84,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="bg-blue-950 text-center text-white text-sm py-4">
+      <div className="bg-[#05305C] text-center text-white text-sm py-4">
         © Copyright 2025. Powered by Super Cool Air Conditioning Trading LLC
       </div>
 

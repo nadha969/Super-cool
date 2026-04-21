@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header className="w-full fixed z-50 top-0 left-0">
       {/* Top Welcome Bar */}
-      <div className="bg-blue-900 text-white text-center text-sm py-2 tracking-wide">
+      <div className="bg-[#05305C] text-white text-center text-sm py-2 tracking-wide">
         WELCOME TO OUR STORE
       </div>
 
