@@ -18,6 +18,7 @@ export async function POST(req: Request) {
     const name = formData.get("name") as string;
     const slug = formData.get("slug") as string;
     const brand = formData.get("brand") as string;
+    const price = formData.get("price") as string;
     const category = formData.get("category") as string;
     const descriptionRaw = formData.get("description") as string;
     const file = formData.get("image") as File | null;
@@ -44,6 +45,7 @@ export async function POST(req: Request) {
       slug: slug + "-" + Date.now(),
       brand,
       category,
+      price,
       image: imageUrl,
       description,
     });
