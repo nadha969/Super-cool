@@ -1,88 +1,104 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { BASE_URL } from "@/lib/api";
+import { useEffect, useState } from "react";
+
+async function fetchTrending() {
+  const res = await fetch(`${BASE_URL}/api/trending`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) return [];
+  return res.json();
+}
 
 export default function TrendingModels() {
-  const products = [
-    {
-      title: "Carrier Wall Split AC",
-      brand: "CARRIER",
-      compressor: "Rotary Compressor",
-      capacity: "18,000 BTU",
-      price: "From 1,949 AED",
-      image:
-        "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    },
-    {
-      title: "Carrier Wall Split AC",
-      brand: "CARRIER",
-      compressor: "Rotary Compressor",
-      capacity: "18,000 BTU",
-      price: "From 1,949 AED",
-      image:
-        "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    },
-    {
-      title: "Carrier Wall Split AC",
-      brand: "CARRIER",
-      compressor: "Rotary Compressor",
-      capacity: "18,000 BTU",
-      price: "From 1,949 AED",
-      image:
-        "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    },
-    {
-      title: "Carrier Wall Split AC",
-      brand: "CARRIER",
-      compressor: "Rotary Compressor",
-      capacity: "18,000 BTU",
-      price: "From 1,949 AED",
-      image:
-        "https://tse2.mm.bing.net/th/id/OIP.errQJUuRIqXxhazbthZeegHaE7?rs=1&pid=ImgDetMain&o=7&rm=3",
-    },
-  ];
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetchTrending().then(setProducts);
+  }, []);
 
   return (
-    <section className="py-10">
-      <h4 className="text-center text-xl font-semibold mb-8">
-        Trending Models
-      </h4>
+    <section className="py-14 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Heading */}
+        <div className="text-center mb-10">
+          <p className="text-blue-600 font-semibold uppercase tracking-widest text-sm">
+            Featured Collection
+          </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
-        {products.map((product, index) => (
-          <div
-            key={index}
-            className="bg-white border rounded-lg shadow-sm hover:shadow-lg transition p-4"
-          >
-            <div className="flex justify-center">
-              <Image
-                src={product.image}
-                alt={product.title}
-                width={250}
-                height={200}
-                className="object-contain"
-              />
-            </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
+            Trending Models
+          </h2>
 
-            <h3 className="text-center font-semibold mt-3">
-              {product.title}
-            </h3>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+        </div>
 
-            <p className="text-gray-500 text-sm mt-2">
-              {product.brand} <br />
-              {product.compressor} <br />
-              {product.capacity}
-            </p>
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {products.map((product, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.03 }}
+              className="group bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden"
+            >
+              {/* Image */}
+              <Link
+                href={`/brands/${product.brand}/${product.category}/${product.slug}`}
+              >
+                <div className="relative h-64 flex items-center justify-center bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+                  <Image
+                    src={product.image || "/placeholder.jpg"}
+                    alt={product.name}
+                    width={260}
+                    height={220}
+                    className="object-contain transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
 
-            <h5 className="font-semibold mt-3">{product.price}</h5>
+                <div className="p-5">
+                  <p className="text-xs uppercase text-blue-600 font-semibold">
+                    {product.brand}
+                  </p>
 
-            <div className="text-center mt-4">
-              <button className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
-                Shop Now
-              </button>
-            </div>
+                  <h3 className="text-lg font-bold text-gray-900 mt-2 line-clamp-2 min-h-[56px]">
+                    {product.name}
+                  </h3>
+
+                  <h5 className="text-xl font-bold text-blue-600 mt-3">
+                    AED {product.price}
+                  </h5>
+                </div>
+              </Link>
+
+              {/* Button */}
+              <div className="px-5 pb-5">
+                <Link
+                  href={`/brands/${product.brand}/${product.category}/${product.slug}`}
+                  className="block w-full text-center bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+                >
+                  View Details
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Empty */}
+        {products.length === 0 && (
+          <div className="text-center text-gray-500 py-10">
+            No trending products found.
           </div>
-        ))}
+        )}
       </div>
-
     </section>
   );
 }
