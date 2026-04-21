@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BASE_URL } from "@/lib/api";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "@/lib/api";
 
 async function fetchTrending() {
   const res = await fetch(`${BASE_URL}/api/trending`, {
@@ -43,11 +43,16 @@ export default function TrendingModels() {
           {products.map((product, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.03 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.08,
+                ease: "easeOut",
+              }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }} // 👈 mobile click animation
               className="group bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden"
             >
               {/* Image */}
@@ -83,7 +88,7 @@ export default function TrendingModels() {
               <div className="px-5 pb-5">
                 <Link
                   href={`/brands/${product.brand}/${product.category}/${product.slug}`}
-                  className="block w-full text-center bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+                  className="block w-full text-center bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 active:scale-95 transition"
                 >
                   View Details
                 </Link>

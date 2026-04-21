@@ -50,9 +50,7 @@ export default async function CategoryPage({
               >
                 {/* Image */}
                 <div className="relative p-6 bg-white">
-                  <span className="absolute top-4 right-4 bg-cyan-400 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
-                    Sale
-                  </span>
+                
 
                   <Image
                     src={product.image}
