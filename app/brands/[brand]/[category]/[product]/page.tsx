@@ -41,6 +41,7 @@ export default async function ProductPage({
 
       <div className="max-w-7xl mx-auto px-6 py-10 pt-40">
         <div className="grid md:grid-cols-2 gap-10">
+          {/* Image */}
           <div>
             <div className="relative w-full h-[400px] bg-gray-100 rounded-lg">
               <Image
@@ -51,29 +52,45 @@ export default async function ProductPage({
               />
             </div>
           </div>
-<div>
-  <h1 className="text-3xl font-bold mb-4">
-    {item.name}
-  </h1>
 
-  <p className="text-blue-600 font-semibold mb-4 uppercase">
-    {item.brand}
-  </p>
+          {/* Content */}
+          <div>
+            <h1 className="text-3xl font-bold mb-4">
+              {item.name}
+            </h1>
 
-  <div className="text-gray-600 mb-6 space-y-4">
-    <p>{item.description?.paragraph1}</p>
+            <p className="text-blue-600 font-semibold mb-3 uppercase">
+              {item.brand}
+            </p>
 
-    <p>{item.description?.paragraph2}</p>
+            {/* Price Tag */}
+            <div className="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-lg mb-6 text-lg">
+              AED {Number(item.price || 0).toLocaleString()}
+            </div>
 
-    <ul className="list-disc pl-5 space-y-2 text-gray-700">
-      {item.description?.bullets?.map(
-        (point: string, i: number) => (
-          <li key={i}>{point}</li>
-        )
-      )}
-    </ul>
-  </div>
-</div>
+            <div className="text-gray-600 space-y-4">
+              <p>
+                {item.description?.paragraph1}
+              </p>
+
+              <p>
+                {item.description?.paragraph2}
+              </p>
+
+              <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                {item.description?.bullets?.map(
+                  (
+                    point: string,
+                    i: number
+                  ) => (
+                    <li key={i}>
+                      {point}
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 

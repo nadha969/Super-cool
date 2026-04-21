@@ -58,12 +58,10 @@ export default async function Carrier() {
     );
   }
 
-  // Unique product categories only
   const usedCategories = [
     ...new Set(products.map((item) => item.category)),
   ];
 
-  // Match with category collection
   const categoryData = usedCategories.map((cat) => {
     const matched = allCategories.find(
       (c) => c.slug === cat
@@ -72,8 +70,7 @@ export default async function Carrier() {
     return {
       name: matched?.name || cat,
       slug: cat,
-      image:
-        matched?.image || "/placeholder.jpg",
+      image: matched?.image || "/placeholder.jpg",
     };
   });
 
@@ -91,11 +88,9 @@ export default async function Carrier() {
       {/* Categories */}
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="pb-10">
-          <p className="text-center text-lg text-gray-600">
-            Carrier Air Conditioners deliver
-            reliable cooling solutions with
-            advanced technology, energy
-            efficiency, and premium comfort for
+          <p className="text-center text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Carrier Air Conditioners deliver reliable cooling solutions with
+            advanced technology, energy efficiency, and premium comfort for
             homes and businesses.
           </p>
         </div>
@@ -105,28 +100,36 @@ export default async function Carrier() {
             <Link
               key={index}
               href={`/brands/carrier/${cat.slug}`}
-              className="group border border-gray-200 rounded-2xl p-6 bg-white shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative border border-gray-200 rounded-2xl p-6 bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
             >
-              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50">
-     <Image
-  src={
-    cat.image
-      ? cat.image.startsWith("http")
-        ? cat.image
-        : cat.image.startsWith("/")
-        ? cat.image
-        : `/categories/${cat.image}`
-      : "/placeholder.jpg"
-  }
-  alt={cat.name}
-  fill
-  className="object-contain p-4"
-/>
+              {/* Glow Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-sky-100 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+              {/* Image */}
+              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50 z-10">
+                <Image
+                  src={
+                    cat.image
+                      ? cat.image.startsWith("http")
+                        ? cat.image
+                        : cat.image.startsWith("/")
+                        ? cat.image
+                        : `/categories/${cat.image}`
+                      : "/placeholder.jpg"
+                  }
+                  alt={cat.name}
+                  fill
+                  className="object-contain p-4 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1"
+                />
               </div>
 
-              <h3 className="text-center font-bold text-lg uppercase text-gray-800">
+              {/* Title */}
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
                 {cat.name}
               </h3>
+
+              {/* Bottom Line Animation */}
+              <div className="relative z-10 mt-4 h-1 w-0 bg-blue-600 mx-auto rounded-full group-hover:w-20 transition-all duration-500"></div>
             </Link>
           ))}
         </div>

@@ -50,9 +50,7 @@ export default async function SuperGeneral() {
   ];
 
   const categoryData = usedCategories.map((cat) => {
-    const matched = allCategories.find(
-      (c) => c.slug === cat
-    );
+    const matched = allCategories.find((c) => c.slug === cat);
 
     return {
       name: matched?.name || cat,
@@ -65,12 +63,14 @@ export default async function SuperGeneral() {
     <div>
       <Header />
 
+      {/* Hero */}
       <div className="pt-30 flex-1">
         <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
           Super General Air Conditioners Collection
         </h1>
       </div>
 
+      {/* Categories */}
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="pb-10">
           <p className="text-center text-lg text-gray-600 max-w-5xl mx-auto">
@@ -79,14 +79,21 @@ export default async function SuperGeneral() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categoryData.map((cat, index) => (
             <Link
               key={index}
               href={`/brands/supergeneral/${cat.slug}`}
-              className="group border-2 border-[#ebebebfd] rounded-xl p-6 flex flex-col bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-transparent"
+              className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 p-6 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl active:scale-[0.98]"
             >
-              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50">
+              {/* Animated Side Bar */}
+              <div className="absolute left-0 top-0 h-full w-0 bg-gradient-to-b from-blue-500 to-indigo-600 transition-all duration-500 group-hover:w-2"></div>
+
+              {/* Floating Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-indigo-50 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+
+              {/* Image */}
+              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50 z-10">
                 <Image
                   src={
                     cat.image
@@ -99,13 +106,17 @@ export default async function SuperGeneral() {
                   }
                   alt={cat.name}
                   fill
-                  className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
+                  className="object-contain p-4 transition-all duration-500 group-hover:scale-110 group-hover:-rotate-1"
                 />
               </div>
 
-              <h3 className="text-center font-bold text-lg uppercase text-[#1a1a1a] tracking-tight">
+              {/* Title */}
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 tracking-tight transition-all duration-300 group-hover:text-blue-600">
                 {cat.name}
               </h3>
+
+              {/* Bottom Animated Line */}
+              <div className="relative z-10 mx-auto mt-3 h-[2px] w-0 bg-blue-500 transition-all duration-500 group-hover:w-20"></div>
             </Link>
           ))}
         </div>

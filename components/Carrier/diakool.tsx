@@ -1,91 +1,131 @@
-import React from "react";
+import Image from "next/image";
 import Link from "next/link";
+import BlogCard from "../Home/Insight";
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import { BASE_URL } from "@/lib/api";
 
-async function getProducts() {
-  const res = await fetch(
-    `${BASE_URL}/api/brands/tcl`,
-    { cache: "no-store" }
-  );
+type Product = {
+  category: string;
+};
+
+type Category = {
+  name: string;
+  slug: string;
+  image?: string;
+};
+
+// Fetch Products
+async function getProducts(): Promise<Product[]> {
+  const res = await fetch(`${BASE_URL}/api/brands/tcl`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch products");
+  }
 
   return res.json();
 }
 
-const TCLCollection = async () => {
+// Fetch Categories
+async function getCategories(): Promise<Category[]> {
+  const res = await fetch(`${BASE_URL}/api/categories`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch categories");
+  }
+
+  return res.json();
+}
+
+export default async function TCL() {
   const products = await getProducts();
+  const allCategories = await getCategories();
+
+  const usedCategories = [
+    ...new Set(products.map((item) => item.category)),
+  ];
+
+  const categoryData = usedCategories.map((cat) => {
+    const matched = allCategories.find((c) => c.slug === cat);
+
+    return {
+      name: matched?.name || cat,
+      slug: cat,
+      image: matched?.image || "/placeholder.jpg",
+    };
+  });
 
   return (
     <div>
       <Header />
 
-      <div className="min-h-screen bg-gray-50 font-sans text-gray-800 pt-30">
-        <main className="max-w-7xl mx-auto p-6">
-          <div className="flex flex-col md:flex-row gap-8">
-            <section className="flex-1">
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {products.map((product: any) => (
-                  <div
-                    key={product._id}
-                    className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col"
-                  >
-                    <div className="relative p-6 bg-white">
-                      <span className="absolute top-4 right-4 bg-cyan-400 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
-                        Sale
-                      </span>
+      {/* Hero */}
+      <main className="pt-30 flex-1">
+        <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
+          TCL Air Conditioners Collection
+        </h1>
+      </main>
 
-                    <img
-  src={product.image || "/placeholder.jpg"}
-  alt={product.name}
-  className="w-full h-auto object-contain"
-/>
-                    </div>
+      {/* Categories */}
+      <section className="max-w-7xl mx-auto px-4 py-12">
+        <div className="pb-10">
+          <p className="text-center text-lg text-gray-600 max-w-4xl mx-auto">
+            TCL Air Conditioning Systems deliver smart, reliable and efficient
+            cooling solutions for homes and businesses.
+          </p>
+        </div>
 
-                    <div className="p-6 pt-0 flex flex-col flex-grow">
-                      <h3 className="text-xl font-bold leading-tight mb-1">
-                        {product.name}
-                      </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {categoryData.map((cat, index) => (
+            <Link
+              key={index}
+              href={`/brands/tcl/${cat.slug}`}
+              className="group relative rounded-2xl bg-white p-6 shadow-sm border border-gray-200 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+            >
+              {/* Animated top border */}
+              <div className="absolute top-0 left-0 h-1 w-0 bg-blue-600 group-hover:w-full transition-all duration-500"></div>
 
-                      <p className="text-xs text-gray-500 font-semibold mb-4 tracking-wider uppercase">
-                        {product.brand}
-                      </p>
+              {/* Animated glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-sky-100 opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
-                      <div className="text-sm text-gray-600 mb-6 space-y-1">
-                        {product.specs?.map(
-                          (
-                            item: string,
-                            i: number
-                          ) => (
-                            <p key={i}>{item}</p>
-                          )
-                        )}
-                      </div>
-
-                      <div className="mt-auto border-t border-dashed border-gray-200 pt-4">
-                        <Link
-                          href={`/brands/tcl/${product.category}/${product.slug}`}
-                          className="block text-center w-full bg-[#1a2b6d] hover:bg-[#121e4d] text-white font-bold py-3 px-6 rounded-full transition-colors"
-                        >
-                          View
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+              {/* Image */}
+              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50 z-10">
+                <Image
+                  src={
+                    cat.image
+                      ? cat.image.startsWith("http")
+                        ? cat.image
+                        : cat.image.startsWith("/")
+                        ? cat.image
+                        : `/categories/${cat.image}`
+                      : "/placeholder.jpg"
+                  }
+                  alt={cat.name}
+                  fill
+                  className="object-contain p-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-1"
+                />
               </div>
 
-              {products.length === 0 && (
-                <p>No products found</p>
-              )}
-            </section>
-          </div>
-        </main>
-      </div>
+              {/* Title */}
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                {cat.name} COLLECTIONS
+              </h3>
 
+              {/* Arrow */}
+              <div className="relative z-10 mt-4 text-center text-blue-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 transition-all duration-500">
+                →
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <BlogCard />
       <Footer />
     </div>
   );
-};
-
-export default TCLCollection;
+}

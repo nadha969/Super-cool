@@ -14,29 +14,21 @@ type Category = {
   image?: string;
 };
 
-// Fetch Products
 async function getProducts(): Promise<Product[]> {
   const res = await fetch(`${BASE_URL}/api/brands/daikin`, {
     cache: "no-store",
   });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
-
+  if (!res.ok) throw new Error("Failed to fetch products");
   return res.json();
 }
 
-// Fetch Categories
 async function getCategories(): Promise<Category[]> {
   const res = await fetch(`${BASE_URL}/api/categories`, {
     cache: "no-store",
   });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch categories");
-  }
-
+  if (!res.ok) throw new Error("Failed to fetch categories");
   return res.json();
 }
 
@@ -49,9 +41,7 @@ export default async function Daikin() {
   ];
 
   const categoryData = usedCategories.map((cat) => {
-    const matched = allCategories.find(
-      (c) => c.slug === cat
-    );
+    const matched = allCategories.find((c) => c.slug === cat);
 
     return {
       name: matched?.name || cat,
@@ -86,9 +76,13 @@ export default async function Daikin() {
             <Link
               key={index}
               href={`/brands/daikin/${cat.slug}`}
-              className="group border border-gray-200 rounded-2xl p-6 bg-white shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative bg-white border border-gray-200 rounded-2xl p-6 shadow-sm overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
             >
-              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50">
+              {/* Corner Accent */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-blue-100 rounded-bl-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+
+              {/* Image */}
+              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50 z-10">
                 <Image
                   src={
                     cat.image
@@ -101,13 +95,17 @@ export default async function Daikin() {
                   }
                   alt={cat.name}
                   fill
-                  className="object-contain p-4"
+                  className="object-contain p-4 transition-all duration-500 group-hover:scale-110"
                 />
               </div>
 
-              <h3 className="text-center font-bold text-lg uppercase text-gray-800">
+              {/* Title */}
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
                 {cat.name}
               </h3>
+
+              {/* Bottom Border Animation */}
+              <div className="mt-4 h-0.5 w-0 bg-blue-600 mx-auto group-hover:w-24 transition-all duration-500"></div>
             </Link>
           ))}
         </div>

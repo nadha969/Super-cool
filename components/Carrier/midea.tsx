@@ -50,9 +50,7 @@ export default async function Midea() {
   ];
 
   const categoryData = usedCategories.map((cat) => {
-    const matched = allCategories.find(
-      (c) => c.slug === cat
-    );
+    const matched = allCategories.find((c) => c.slug === cat);
 
     return {
       name: matched?.name || cat,
@@ -86,9 +84,13 @@ export default async function Midea() {
             <Link
               key={index}
               href={`/brands/midea/${cat.slug}`}
-              className="group border-2 border-[#4747ec] rounded-xl p-6 bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-transparent"
+              className="group relative border border-gray-200 rounded-2xl p-6 bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
             >
-              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50">
+              {/* Hover Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-transparent to-blue-100 opacity-0 group-hover:opacity-100 transition duration-500" />
+
+              {/* Image */}
+              <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50 z-10">
                 <Image
                   src={
                     cat.image
@@ -101,13 +103,17 @@ export default async function Midea() {
                   }
                   alt={cat.name}
                   fill
-                  className="object-contain p-4 transition-transform duration-300 group-hover:scale-110"
+                  className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
 
-              <h3 className="text-center font-bold text-lg uppercase text-[#1a1a1a] group-hover:text-[#4747ec] transition-colors">
+              {/* Title */}
+              <h3 className="relative z-10 text-center font-bold text-lg uppercase text-gray-800 group-hover:text-indigo-600 transition-colors duration-300">
                 {cat.name}
               </h3>
+
+              {/* Bottom Line */}
+              <div className="relative z-10 mt-4 h-1 w-0 bg-indigo-600 mx-auto rounded-full group-hover:w-20 transition-all duration-500"></div>
             </Link>
           ))}
         </div>
