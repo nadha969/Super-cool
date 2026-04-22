@@ -21,7 +21,9 @@ export default function Footer() {
               height={60}
             />
 
-         
+            <p className="text-gray-700 underline cursor-pointer">
+              04 328 1682
+            </p>
 
             <p className="text-gray-700 underline cursor-pointer">
               +971 569011041
@@ -82,8 +84,8 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="bg-[#05305C] text-center text-white text-sm py-4">
-        © Copyright 2025. Powered by Super Cool Air Conditioning Trading LLC
+      <div className="bg-[#17416b] text-center text-white text-sm py-4">
+      © {new Date().getFullYear()} Acmart Uae. All rights reserved.
       </div>
 
     </footer>
