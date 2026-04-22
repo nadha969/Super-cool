@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "@/lib/api";
 
 async function fetchTrending() {
-  const res = await fetch(`${BASE_URL}/api/trending`, {
+  const res = await fetch(`/api/trending`, {
     cache: "no-store",
   });
 
