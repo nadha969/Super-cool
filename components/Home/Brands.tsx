@@ -11,7 +11,7 @@ export default function Brands() {
       image:
           "/logo/carrierlogo.webp"    },
     {
-      name: "general",
+      name: "o-general",
       image:
         "https://top10gears.com/wp-content/uploads/2019/06/ogeneral.png",
     },

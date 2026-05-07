@@ -85,7 +85,7 @@ export default async function OGeneral() {
           {categoryData.map((cat, index) => (
             <Link
               key={index}
-              href={`/brands/general/${cat.slug}`}
+              href={`/brands/o-general/${cat.slug}`}
               className="group border-2 border-[#ebebebfd] rounded-xl p-6 bg-white transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-transparent"
             >
               <div className="relative w-full h-64 mb-6 overflow-hidden rounded-xl bg-gray-50">

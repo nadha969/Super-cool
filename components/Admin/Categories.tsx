@@ -176,16 +176,12 @@ refresh?.();  }, []);
             >
               <div className="relative w-full h-40 bg-gray-100  overflow-hidden">
           <Image
-            src={
-              item.image
-                ? item.image.startsWith("/")
-                  ? item.image
-                  : `/categories/${item.image}`
-                : "/placeholder.jpg"
-            }
-            alt={item.name}
-            fill
-            className="w-100 h-50"/></div>
+  src={item.image || "/placeholder.jpg"}
+  alt={item.name}
+  fill
+  unoptimized
+  className="object-cover"
+/></div>
 
            <div className="flex items-center justify-between mt-3">
   <h3 className="font-semibold text-lg text-gray-800 truncate">

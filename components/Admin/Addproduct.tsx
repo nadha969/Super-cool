@@ -55,7 +55,11 @@ export default function AddProduct({ brands, categories, refresh }: any) {
 
     setLoading(true);
 
-    const slug = product.name.toLowerCase().trim().replaceAll(" ", "-");
+   const slug = product.name
+  .toLowerCase()
+  .trim()
+  .replace(/[^a-z0-9\s-]/g, "")
+  .replace(/\s+/g, "-");
 
     const formData = new FormData();
     formData.append("name", product.name);
