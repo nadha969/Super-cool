@@ -3,7 +3,8 @@ import {
   Package,
   PlusCircle,
   Layers,
-  LogOut
+  LogOut,
+  Tag
 } from "lucide-react";
 
 export default function Sidebar({ tab, setTab, logout }: any) {
@@ -12,6 +13,7 @@ export default function Sidebar({ tab, setTab, logout }: any) {
     { name: "products", icon: <Package size={18} /> },
     { name: "add-product", icon: <PlusCircle size={18} /> },
     { name: "categories", icon: <Layers size={18} /> },
+    // { name: "brands", icon: <Tag size={18} /> },
   ];
 
   return (

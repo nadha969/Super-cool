@@ -17,7 +17,7 @@ type Category = {
 
 // Fetch Products
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch(`${BASE_URL}/api/brands/general`, {
+  const res = await fetch(`${BASE_URL}/api/brands/o-general`, {
     cache: "no-store",
   });
 

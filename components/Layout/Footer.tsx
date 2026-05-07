@@ -66,7 +66,7 @@ export default function Footer() {
               <li><Link href="/brands/daikin">Daikin</Link></li>
               <li><Link href="/brands/midea">Midea</Link></li>
               <li><Link href="/brands/supergeneral">Super General</Link></li>
-              <li><Link href="/brands/general">O General</Link></li>
+              <li><Link href="/brands/o-general">O General</Link></li>
               <li><Link href="/brands/tcl">TCL</Link></li>
             </ul>
           </div>

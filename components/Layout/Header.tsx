@@ -39,7 +39,7 @@ export default function Header() {
             <Link className="hover:underline hover:text-black" href="/brands/carrier">Carrier</Link>
             <Link className="hover:underline hover:text-black" href="/brands/daikin">Daikin</Link>
             <Link className="hover:underline hover:text-black" href="/brands/midea">Midea</Link>
-            <Link className="hover:underline hover:text-black" href="/brands/general">O General</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/o-general">O General</Link>
             <Link className="hover:underline hover:text-black" href="/brands/tcl">TCL</Link>
             <Link className="hover:underline hover:text-black" href="/brands/supergeneral">Super General</Link>
           </nav>
@@ -69,7 +69,7 @@ export default function Header() {
               <Link href="/brands/carrier" onClick={() => setMenuOpen(false)}>Carrier</Link>
               <Link href="/brands/daikin" onClick={() => setMenuOpen(false)}>Daikin</Link>
               <Link href="/brands/midea" onClick={() => setMenuOpen(false)}>Midea</Link>
-              <Link href="/brands/general" onClick={() => setMenuOpen(false)}>O General</Link>
+              <Link href="/brands/o-general" onClick={() => setMenuOpen(false)}>O General</Link>
               <Link href="/brands/tcl" onClick={() => setMenuOpen(false)}>TCL</Link>
               <Link href="/brands/supergeneral" onClick={() => setMenuOpen(false)}>Super General</Link>
             </nav>

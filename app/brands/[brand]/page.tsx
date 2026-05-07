@@ -19,7 +19,7 @@ export default async function BrandPage({ params }: any) {
     return <Daikin />;
   }
 
-    if (brand === "general") {
+    if (brand === "o-general") {
     return <OGeneral />;
   }
     
