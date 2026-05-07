@@ -22,10 +22,6 @@ export default function Footer() {
             />
 
             <p className="text-gray-700 underline cursor-pointer">
-              04 328 1682
-            </p>
-
-            <p className="text-gray-700 underline cursor-pointer">
               +971 569011041
             </p>
 

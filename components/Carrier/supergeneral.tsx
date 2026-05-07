@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import BlogCard from "../Home/Insight";
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import { BASE_URL } from "@/lib/api";
@@ -122,7 +121,6 @@ export default async function SuperGeneral() {
         </div>
       </section>
 
-      <BlogCard />
       <Footer />
     </div>
   );

@@ -21,7 +21,6 @@ export default function Home() {
     <Collection/>
     <Brands/>
     <Model/>
-    <BlogCard/>
     <Footer/>
   </div>
   );
