@@ -38,16 +38,21 @@ export default function ProductPage({
   const [item, setItem] =
     useState<any>(null);
 
+    const [loading, setLoading] =
+  useState(true);
+
   const [selectedImage, setSelectedImage] =
     useState<string | null>(null);
 
   useEffect(() => {
+    setLoading(true);
+
     async function loadProduct() {
       const data =
         await getProduct(product);
 
       setItem(data);
-
+ setLoading(false);
       // Set first image as main image
       if (
   data?.images?.length > 0
@@ -65,13 +70,7 @@ export default function ProductPage({
     loadProduct();
   }, [product]);
 
-  if (!item) {
-    return (
-      <div className="p-10">
-        Product not found
-      </div>
-    );
-  }
+  if (!item) return null;
 
   return (
     <div>

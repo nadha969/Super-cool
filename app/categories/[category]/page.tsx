@@ -52,13 +52,17 @@ export default async function CategoryPage({
                 <div className="relative p-6 bg-white">
                 
 
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={300}
-                    height={300}
-                    className="w-full h-auto object-contain"
-                  />
+                 <Image
+  src={
+    product.images?.[0] ||
+    product.image ||
+    "/placeholder.png"
+  }
+  alt={product.name}
+  width={300}
+  height={300}
+  className="w-full h-auto object-contain"
+/>
                 </div>
 
                 {/* Info */}
