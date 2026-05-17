@@ -20,42 +20,73 @@ export async function POST(req: Request) {
     const brand = formData.get("brand") as string;
     const price = formData.get("price") as string;
     const category = formData.get("category") as string;
-    const descriptionRaw = formData.get("description") as string;
-    const file = formData.get("image") as File | null;
 
-    let imageUrl = "";
+    const descriptionRaw = formData.get(
+      "description"
+    ) as string;
 
-    if (file) {
+    // Get all images
+    const imageFiles = formData.getAll(
+      "images"
+    ) as File[];
+
+    const imageUrls: string[] = [];
+
+    // Upload all images
+    for (const file of imageFiles) {
       const bytes = await file.arrayBuffer();
+
       const buffer = Buffer.from(bytes);
 
-      const base64 = `data:${file.type};base64,${buffer.toString("base64")}`;
+      const base64 = `data:${file.type};base64,${buffer.toString(
+        "base64"
+      )}`;
 
-      const uploadRes = await cloudinary.uploader.upload(base64, {
-        folder: "products",
-      });
+      const uploadRes =
+        await cloudinary.uploader.upload(
+          base64,
+          {
+            folder: "products",
+          }
+        );
 
-      imageUrl = uploadRes.secure_url;
+      imageUrls.push(
+        uploadRes.secure_url
+      );
     }
 
-    const description = JSON.parse(descriptionRaw);
+    const description = JSON.parse(
+      descriptionRaw
+    );
 
-    const product = await Product.create({
-      name,
-      slug: slug + "-" + Date.now(),
-      brand,
-      category,
-      price,
-      image: imageUrl,
-      description,
-    });
+    const product =
+      await Product.create({
+        name,
+        slug:
+          slug + "-" + Date.now(),
+        brand,
+        category,
+        price,
 
-    return NextResponse.json(product);
-  } catch (error) {
-    console.error("POST ERROR:", error);
+        // Save images array
+        images: imageUrls,
+
+        description,
+      });
 
     return NextResponse.json(
-      { message: "Upload Error" },
+      product
+    );
+  } catch (error) {
+    console.error(
+      "POST ERROR:",
+      error
+    );
+
+    return NextResponse.json(
+      {
+        message: "Upload Error",
+      },
       { status: 500 }
     );
   }
@@ -64,9 +95,12 @@ export async function POST(req: Request) {
 export async function GET() {
   await connectDB();
 
-  const products = await Product.find().sort({
-    createdAt: -1,
-  });
+  const products =
+    await Product.find().sort({
+      createdAt: -1,
+    });
 
-  return NextResponse.json(products);
+  return NextResponse.json(
+    products
+  );
 }

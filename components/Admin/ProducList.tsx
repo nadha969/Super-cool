@@ -23,8 +23,10 @@ export default function ProductList({
   const [saving, setSaving] = useState(false);
 
   const openModal = (item: any) => {
-    setSelected(JSON.parse(JSON.stringify(item)));
-    setEditing(false);
+setSelected({
+  ...item,
+  images: item.images || [],
+});    setEditing(false);
   };
 
   const closeModal = () => {
@@ -321,6 +323,104 @@ export default function ProductList({
 
             {/* Body */}
             <div className="p-8 space-y-8">
+              {/* Images */}
+<div>
+  <label className="text-sm font-semibold text-slate-700 block mb-3">
+    Product Images
+  </label>
+
+  <div className="flex flex-wrap gap-4">
+    {(
+      selected.images?.length
+        ? selected.images
+        : selected.image
+        ? [selected.image]
+        : []
+    ).map((img: any, index: number) => {
+const src =
+  typeof img === "string"
+    ? img
+    : img?.preview || img?.url || "";
+          return (
+        <div
+          key={index}
+          className="relative w-28 h-28 rounded-2xl overflow-hidden border bg-slate-50 group"
+        >
+          <img
+            src={src}
+            alt={`product-${index}`}
+            className="w-full h-full object-contain p-2"
+          />
+
+          {/* Remove Button */}
+          {editing && (
+            <button
+              onClick={() => {
+                const updated = [
+                  ...(selected.images || [])
+                ];
+
+                updated.splice(index, 1);
+
+                setSelected({
+                  ...selected,
+                  images: updated,
+                });
+              }}
+              className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition"
+            >
+              <X className="w-3 h-3" />
+            </button>
+          )}
+        </div>
+      );
+    })}
+  </div>
+
+  {/* Upload from device (NEW) */}
+  {editing && (
+    <div className="mt-4">
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        className="w-full border border-slate-200 p-3 rounded-xl"
+      onChange={async (e) => {
+  if (!e.target.files) return;
+
+  try {
+    const formData = new FormData();
+
+    Array.from(e.target.files).forEach((file) => {
+      formData.append("files", file);
+    });
+
+    const res = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await res.json();
+
+    setSelected({
+      ...selected,
+      images: [
+        ...(selected.images || []),
+        ...data.images,
+      ],
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}}
+      />
+
+      <p className="text-xs text-slate-400 mt-2">
+        Select images from your device
+      </p>
+    </div>
+  )}
+</div>
               {/* Top Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Field label="Product Name">

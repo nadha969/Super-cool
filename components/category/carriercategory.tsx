@@ -44,15 +44,13 @@ export default async function Carriercategory({
             >
               <div className="relative p-6">
                 <div className="relative w-full h-40">
-                          <Image
+                       <Image
   src={
-    product.image?.startsWith("http")
-      ? product.image
-      : product.image?.startsWith("/")
-      ? product.image
-      : `/products/${product.image || "placeholder.jpg"}`
+    product.images?.[0] ||
+    product.image ||
+    "/placeholder.jpg"
   }
-  alt="product"
+  alt={product.name}
   fill
   className="object-contain"
 />

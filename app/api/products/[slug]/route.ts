@@ -85,6 +85,8 @@ export async function PUT(
         category: body.category,
         price: body.price,
         description: body.description,
+
+        images: body.images,
       },
       { new: true }
     );

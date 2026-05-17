@@ -60,13 +60,17 @@ export default function TrendingModels() {
                 href={`/brands/${product.brand}/${product.category}/${product.slug}`}
               >
                 <div className="relative h-64 flex items-center justify-center bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-                  <Image
-                    src={product.image || "/placeholder.jpg"}
-                    alt={product.name}
-                    width={260}
-                    height={220}
-                    className="object-contain transition-transform duration-500 group-hover:scale-110"
-                  />
+                 <Image
+  src={
+    product.images?.[0] ||
+    product.image ||
+    "/placeholder.jpg"
+  }
+  alt={product.name}
+  width={260}
+  height={220}
+  className="object-contain transition-transform duration-500 group-hover:scale-110"
+/>
                 </div>
 
                 <div className="p-5">

@@ -1,9 +1,18 @@
+"use client";
+
 import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
 import Image from "next/image";
 import { BASE_URL } from "@/lib/api";
+import {
+  use,
+  useEffect,
+  useState,
+} from "react";
 
-async function getProduct(product: string) {
+async function getProduct(
+  product: string
+) {
   const res = await fetch(
     `${BASE_URL}/api/products/${product}`,
     {
@@ -16,16 +25,45 @@ async function getProduct(product: string) {
   return res.json();
 }
 
-export default async function ProductPage({
+export default function ProductPage({
   params,
 }: {
   params: Promise<{
     product: string;
   }>;
 }) {
-  const { product } = await params;
+  // Unwrap params
+  const { product } = use(params);
 
-  const item = await getProduct(product);
+  const [item, setItem] =
+    useState<any>(null);
+
+  const [selectedImage, setSelectedImage] =
+    useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadProduct() {
+      const data =
+        await getProduct(product);
+
+      setItem(data);
+
+      // Set first image as main image
+      if (
+  data?.images?.length > 0
+) {
+  setSelectedImage(
+    data.images[0]
+  );
+} else if (data?.image) {
+  setSelectedImage(
+    data.image
+  );
+}
+    }
+
+    loadProduct();
+  }, [product]);
 
   if (!item) {
     return (
@@ -41,19 +79,69 @@ export default async function ProductPage({
 
       <div className="max-w-7xl mx-auto px-6 py-10 pt-40">
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Image */}
-          <div>
-            <div className="relative w-full h-[400px] bg-gray-100 rounded-lg">
-              <Image
-                src={item.image}
-                alt={item.name}
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
 
-          {/* Content */}
+          {/* Images Section */}
+         {/* Images Section */}
+<div>
+  {/* Main Image */}
+  <div className="relative w-full h-[450px] bg-gray-100 rounded-2xl overflow-hidden ">
+    {(
+      selectedImage ||
+      item.images?.[0] ||
+      item.image
+    ) && (
+      <Image
+        src={
+          selectedImage ||
+          item.images?.[0] ||
+          item.image
+        }
+        alt={item.name}
+        fill
+        className="object-contain p-4"
+      />
+    )}
+  </div>
+
+  {/* Thumbnail Images */}
+  <div className="flex gap-3 mt-4 flex-wrap">
+    {(
+      item.images?.length
+        ? item.images
+        : item.image
+        ? [item.image]
+        : []
+    ).map(
+      (
+        img: string,
+        i: number
+      ) => (
+        <div
+          key={i}
+          onClick={() =>
+            setSelectedImage(img)
+          }
+          className={`relative w-24 h-24 rounded-xl overflow-hidden border cursor-pointer transition-all duration-200
+          
+          ${
+            selectedImage === img
+              ? "border-blue-600"
+              : "border-gray-300"
+          }
+        `}
+        >
+          <Image
+            src={img}
+            alt={`thumb-${i}`}
+            fill
+            className="object-contain p-2"
+          />
+        </div>
+      )
+    )}
+  </div>
+</div>
+          {/* Product Details */}
           <div>
             <h1 className="text-3xl font-bold mb-4">
               {item.name}
@@ -63,18 +151,28 @@ export default async function ProductPage({
               {item.brand}
             </p>
 
-            {/* Price Tag */}
+            {/* Price */}
             <div className="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-lg mb-6 text-lg">
-              AED {Number(item.price || 0).toLocaleString()}
+              AED{" "}
+              {Number(
+                item.price || 0
+              ).toLocaleString()}
             </div>
 
+            {/* Description */}
             <div className="text-gray-600 space-y-4">
               <p>
-                {item.description?.paragraph1}
+                {
+                  item.description
+                    ?.paragraph1
+                }
               </p>
 
               <p>
-                {item.description?.paragraph2}
+                {
+                  item.description
+                    ?.paragraph2
+                }
               </p>
 
               <ul className="list-disc pl-5 space-y-2 text-gray-700">
