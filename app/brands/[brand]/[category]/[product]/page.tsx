@@ -14,7 +14,7 @@ async function getProduct(
   product: string
 ) {
   const res = await fetch(
-    `${BASE_URL}/api/products/${product}`,
+    `/api/products/${product}`,
     {
       cache: "no-store",
     }
