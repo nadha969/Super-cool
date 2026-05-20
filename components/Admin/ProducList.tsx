@@ -23,11 +23,19 @@ export default function ProductList({
   const [saving, setSaving] = useState(false);
 
   const openModal = (item: any) => {
-setSelected({
-  ...item,
-  images: item.images || [],
-});    setEditing(false);
-  };
+  setSelected({
+    ...item,
+
+    images:
+      item.images?.length
+        ? item.images
+        : item.image
+        ? [item.image]
+        : [],
+  });
+
+  setEditing(false);
+};
 
   const closeModal = () => {
     setSelected(null);
@@ -71,38 +79,45 @@ setSelected({
     }
   };
 
-  const handleSave = async () => {
-    try {
-      setSaving(true);
+ const handleSave = async () => {
+  try {
+    setSaving(true);
 
-      const res = await fetch(
-        `/api/products/${selected.slug}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(selected),
-        }
+    const payload = {
+      ...selected,
+      image: selected.images?.[0] || "",
+    };
+
+    const res = await fetch(
+      `/api/products/${selected.slug}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    if (res.ok) {
+      setList((prev: any) =>
+        prev.map((item: any) =>
+          item.slug === selected.slug
+            ? payload
+            : item
+        )
       );
 
-      if (res.ok) {
-        setList((prev: any) =>
-          prev.map((item: any) =>
-            item.slug === selected.slug
-              ? selected
-              : item
-          )
-        );
+      setSelected(payload);
 
-        setEditing(false);
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setSaving(false);
+      setEditing(false);
     }
-  };
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setSaving(false);
+  }
+};
 
   const updateBullet = (
     index: number,
