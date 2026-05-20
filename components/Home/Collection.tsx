@@ -23,12 +23,12 @@ export default function Collection() {
     },
     {
       title: "CASSETTE AC",
-      slug: "casette",
+      slug: "cassatte-unit",
       img: "https://www.generalcool.ae/wp-content/uploads/2023/08/Cassette.jpg",
     },
     {
-      title: "AIR CURTAINS",
-      slug: "air-curtains",
+      title: "PACKAGE UNIT",
+      slug: "package-unit",
       img: "https://tse3.mm.bing.net/th/id/OIP.GLxrAOlk6vJiZmVd6gz1fAHaFj",
     },
     {
