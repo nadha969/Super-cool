@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { ToastContainer } from "react-toastify";
+import WhatsAppButton from "@/components/category/Whatsappbutton";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +34,7 @@ export default function RootLayout({
     >
 
       {children}
+      <WhatsAppButton />
  <ToastContainer position="top-right" autoClose={2000} />
     </body>
   </html>

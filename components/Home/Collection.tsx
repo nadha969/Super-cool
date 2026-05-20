@@ -19,7 +19,7 @@ export default function Collection() {
     {
       title: "WALL SPLIT",
       slug: "wall-split",
-      img: "https://tse1.mm.bing.net/th/id/OIP.fuCWH-RU4QRR66gsTJ0c8AHaFG",
+      img: "/products/wallsplit.jpeg",
     },
     {
       title: "CASSETTE AC",
@@ -29,7 +29,7 @@ export default function Collection() {
     {
       title: "PACKAGE UNIT",
       slug: "package-unit",
-      img: "https://tse3.mm.bing.net/th/id/OIP.GLxrAOlk6vJiZmVd6gz1fAHaFj",
+      img: "/products/packageunit.jpeg",
     },
     {
       title: "DUCTED UNITS",
