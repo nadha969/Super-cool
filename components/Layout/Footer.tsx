@@ -36,9 +36,9 @@ export default function Footer() {
             <ul className="space-y-3 text-gray-600">
               <li><Link href="#">About Us</Link></li>
               <li><Link href="#">Contact Us</Link></li>
-              <li><Link href="#">Privacy Policy</Link></li>
-              <li><Link href="#">Refund Policy</Link></li>
-              <li><Link href="#">Terms & Conditions</Link></li>
+              <li><Link href="privacypolicy">Privacy Policy</Link></li>
+              <li><Link href="refundpolicy">Refund Policy</Link></li>
+              <li><Link href="termsandconditions">Terms & Conditions</Link></li>
             </ul>
           </div>
 
