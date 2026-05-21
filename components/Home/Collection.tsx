@@ -33,7 +33,7 @@ export default function Collection() {
     },
     {
       title: "DUCTED UNITS",
-      slug: "ducted-units",
+      slug: "ducted-unit",
       img: "https://tse4.mm.bing.net/th/id/OIP.U4RcQbi-5bXjhx46RUw10AHaEO",
     },
   ];

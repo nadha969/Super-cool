@@ -56,7 +56,7 @@ export default async function CategoryPage({
   {/* Discount Badge */}
   {product.discount && (
     <div className="absolute top-3 right-3 bg-[#1a2b6d] text-white text-xs font-bold px-4 py-2 rounded-full shadow-md z-10">
-      {product.discount}
+      {product.discount}% OFF
     </div>
   )}
 
@@ -82,7 +82,30 @@ export default async function CategoryPage({
         <p className="text-xs text-gray-500 font-semibold mb-4 tracking-wider uppercase">
           {product.brand}
         </p>
+           {/* Price */}
+<div className="mt-3 mb-4 flex items-center gap-3 flex-wrap">
+  {product.discount ? (
+    <>
+      {/* Old Price */}
+      <span className="text-gray-400 line-through text-lg font-medium">
+        AED {product.price}
+      </span>
 
+      {/* Discounted Price */}
+      <span className="text-2xl font-bold text-[#1a2b6d]">
+        AED{" "}
+        {Math.round(
+          product.price -
+            (product.price * Number(product.discount)) / 100
+        )}
+      </span>
+    </>
+  ) : (
+    <span className="text-2xl font-bold text-[#1a2b6d]">
+      AED {product.price}
+    </span>
+  )}
+</div>
         {/* Specs */}
         <div className="text-sm text-gray-600 mb-6 space-y-1">
           {product.specs?.map((item: string, i: number) => (

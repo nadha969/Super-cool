@@ -150,13 +150,44 @@ export default function ProductPage({
               {item.brand}
             </p>
 
-            {/* Price */}
-            <div className="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-lg mb-6 text-lg">
-              AED{" "}
-              {Number(
-                item.price || 0
-              ).toLocaleString()} <span className="text-xs">+5% VAT</span>
-            </div>
+           {/* Price */}
+<div className="mb-6">
+  {item.discount ? (
+    <div className="flex items-center gap-4 flex-wrap">
+      
+      {/* Old Price */}
+      <span className="text-gray-400 line-through text-2xl font-medium">
+        AED{" "}
+        {Number(item.price || 0).toLocaleString()}
+      </span>
+
+      {/* Discounted Price */}
+      <div className="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-lg text-2xl">
+        AED{" "}
+        {Math.round(
+          item.price -
+            (item.price * Number(item.discount)) / 100
+        ).toLocaleString()}
+        <span className="text-xs ml-1">
+          +5% VAT
+        </span>
+      </div>
+
+      {/* Discount Badge */}
+      <div className="bg-[#1a2b6d] text-white text-sm font-bold px-3 py-1 rounded-full">
+        {item.discount}% OFF
+      </div>
+    </div>
+  ) : (
+    <div className="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-lg text-lg">
+      AED{" "}
+      {Number(item.price || 0).toLocaleString()}
+      <span className="text-xs ml-1">
+        +5% VAT
+      </span>
+    </div>
+  )}
+</div>
 
             {/* Description */}
             <div className="text-gray-600 space-y-4">

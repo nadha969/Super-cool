@@ -64,7 +64,7 @@ export default function TrendingModels() {
   {/* Discount Badge */}
   {product.discount && (
     <div className="absolute top-3 right-3 bg-[#1a2b6d] text-white text-sm font-bold px-4 py-2 rounded-full shadow-md z-20">
-      {product.discount}
+      {product.discount}% OFF
     </div>
   )}
 
@@ -109,9 +109,30 @@ export default function TrendingModels() {
                     {product.name}
                   </h3>
 
-                  <h5 className="text-xl font-bold text-[#05305C] mt-3">
-                    AED {product.price}
-                  </h5>
+          {/* Price */}
+<div className="mt-3 flex items-center gap-3 flex-wrap">
+  {product.discount ? (
+    <>
+      {/* Old Price */}
+      <span className="text-gray-400 line-through text-lg font-medium">
+        AED {product.price}
+      </span>
+
+      {/* Calculated Discount Price */}
+      <span className="text-2xl font-bold text-[#05305C]">
+        AED{" "}
+        {Math.round(
+          product.price -
+            (product.price * Number(product.discount)) / 100
+        )}
+      </span>
+    </>
+  ) : (
+    <span className="text-2xl font-bold text-[#05305C]">
+      AED {product.price}
+    </span>
+  )}
+</div>
                 </div>
               </Link>
 
