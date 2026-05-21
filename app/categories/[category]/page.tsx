@@ -42,59 +42,64 @@ export default async function CategoryPage({
           </div>
 
           {/* Product Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredProducts.map((product: any) => (
-              <div
-                key={product._id}
-                className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col"
-              >
-                {/* Image */}
-                <div className="relative p-6 bg-white">
-                
+       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  {filteredProducts.map((product: any) => (
+    <Link
+      key={product._id}
+      href={`/brands/${product.brand}/${category}/${product.slug}`}
+      className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition duration-300"
+    >
+    
+      {/* Image */}
+<div className="relative p-6 bg-white">
+  
+  {/* Discount Badge */}
+  {product.discount && (
+    <div className="absolute top-3 right-3 bg-[#1a2b6d] text-white text-xs font-bold px-4 py-2 rounded-full shadow-md z-10">
+      {product.discount}
+    </div>
+  )}
 
-                 <Image
-  src={
-    product.images?.[0] ||
-    product.image ||
-    "/placeholder.png"
-  }
-  alt={product.name}
-  width={300}
-  height={300}
-  className="w-full h-auto object-contain"
-/>
-                </div>
+  <Image
+    src={
+      product.images?.[0] ||
+      product.image ||
+      "/placeholder.png"
+    }
+    alt={product.name}
+    width={300}
+    height={300}
+    className="w-full h-auto object-contain"
+  />
+</div>
 
-                {/* Info */}
-                <div className="p-6 pt-0 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold leading-tight mb-1">
-                    {product.name}
-                  </h3>
+      {/* Info */}
+      <div className="p-6 pt-0 flex flex-col flex-grow">
+        <h3 className="text-xl font-bold leading-tight mb-1">
+          {product.name}
+        </h3>
 
-                  <p className="text-xs text-gray-500 font-semibold mb-4 tracking-wider uppercase">
-                    {product.brand}
-                  </p>
+        <p className="text-xs text-gray-500 font-semibold mb-4 tracking-wider uppercase">
+          {product.brand}
+        </p>
 
-                  {/* Specs */}
-                  <div className="text-sm text-gray-600 mb-6 space-y-1">
-                    {product.specs?.map((item: string, i: number) => (
-                      <p key={i}>{item}</p>
-                    ))}
-                  </div>
+        {/* Specs */}
+        <div className="text-sm text-gray-600 mb-6 space-y-1">
+          {product.specs?.map((item: string, i: number) => (
+            <p key={i}>{item}</p>
+          ))}
+        </div>
 
-                  {/* Button */}
-                  <div className="mt-auto border-t border-dashed border-gray-200 pt-4">
-                    <Link
-                      href={`/brands/${product.brand}/${category}`}
-                      className="block text-center w-full bg-[#1a2b6d] hover:bg-[#121e4d] text-white font-bold py-3 px-6 rounded-full transition-colors"
-                    >
-                      View
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* View Button */}
+        <div className="mt-auto pt-4">
+          <div className="w-full bg-[#1a2b6d] hover:bg-[#121e4d] text-white font-bold py-3 px-6 rounded-full text-center transition-colors">
+            View Details
           </div>
+        </div>
+      </div>
+    </Link>
+  ))}
+</div>
 
           {/* Empty */}
           {filteredProducts.length === 0 && (

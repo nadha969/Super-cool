@@ -20,12 +20,12 @@ export default function AddProduct({ brands, categories, refresh }: any) {
     brand: "",
     category: "",
     price: "",
+    discount: "",
     paragraph1: "",
     paragraph2: "",
     bullets: [""],
   });
 
-  // 1. Changed state to an array to handle multiple files
   const [images, setImages] = useState<File[]>([]);
 
   const updateBullet = (index: number, value: string) => {
@@ -43,23 +43,30 @@ export default function AddProduct({ brands, categories, refresh }: any) {
 
   const removeBullet = (index: number) => {
     const updated = product.bullets.filter((_: any, i: number) => i !== index);
+
     setProduct({
       ...product,
       bullets: updated.length ? updated : [""],
     });
   };
 
-  // Helper to handle multiple image selections
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     if (e.target.files) {
       const selectedFiles = Array.from(e.target.files);
-      setImages((prevImages) => [...prevImages, ...selectedFiles]);
+
+      setImages((prevImages) => [
+        ...prevImages,
+        ...selectedFiles,
+      ]);
     }
   };
 
-  // Helper to remove an image from the selection queue
   const removeImage = (indexToRemove: number) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== indexToRemove));
+    setImages((prevImages) =>
+      prevImages.filter((_, i) => i !== indexToRemove)
+    );
   };
 
   const save = async () => {
@@ -69,13 +76,18 @@ export default function AddProduct({ brands, categories, refresh }: any) {
 
     setLoading(true);
 
-    const slug = product.name.toLowerCase().trim().replaceAll(" ", "-");
+    const slug = product.name
+      .toLowerCase()
+      .trim()
+      .replaceAll(" ", "-");
 
     const formData = new FormData();
+
     formData.append("name", product.name);
     formData.append("brand", product.brand);
     formData.append("category", product.category);
     formData.append("price", product.price);
+    formData.append("discount", product.discount);
     formData.append("slug", slug);
 
     formData.append(
@@ -83,12 +95,12 @@ export default function AddProduct({ brands, categories, refresh }: any) {
       JSON.stringify({
         paragraph1: product.paragraph1,
         paragraph2: product.paragraph2,
-        bullets: product.bullets.filter((item) => item.trim() !== ""),
+        bullets: product.bullets.filter(
+          (item) => item.trim() !== ""
+        ),
       })
     );
 
-    // 2. Loop through the array and append each image to FormData
-    // Note: The backend should look for the array key, typically "images"
     images.forEach((image) => {
       formData.append("images", image);
     });
@@ -107,12 +119,14 @@ export default function AddProduct({ brands, categories, refresh }: any) {
           brand: "",
           category: "",
           price: "",
+          discount: "",
           paragraph1: "",
           paragraph2: "",
           bullets: [""],
         });
 
-        setImages([]); // Reset images array
+        setImages([]);
+
         toast.success("Product Added Successfully!");
       } else {
         toast.error("Failed to save product");
@@ -143,11 +157,15 @@ export default function AddProduct({ brands, categories, refresh }: any) {
             <label className="text-sm font-semibold text-slate-700">
               Product Name *
             </label>
+
             <input
               type="text"
               value={product.name}
               onChange={(e) =>
-                setProduct({ ...product, name: e.target.value })
+                setProduct({
+                  ...product,
+                  name: e.target.value,
+                })
               }
               className="w-full border border-slate-200 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
@@ -164,7 +182,7 @@ export default function AddProduct({ brands, categories, refresh }: any) {
               id="file-upload"
               className="hidden"
               accept="image/*"
-              multiple // Added multiple attribute here
+              multiple
               onChange={handleImageChange}
             />
 
@@ -177,10 +195,10 @@ export default function AddProduct({ brands, categories, refresh }: any) {
                   ? `${images.length} image(s) selected`
                   : "Choose images"}
               </span>
+
               <Upload className="w-5 h-5 text-slate-400" />
             </label>
 
-            {/* Render Image Previews/Chips */}
             {images.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-2">
                 {images.map((img, idx) => (
@@ -188,7 +206,10 @@ export default function AddProduct({ brands, categories, refresh }: any) {
                     key={idx}
                     className="flex items-center gap-2 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md text-xs font-medium max-w-xs group"
                   >
-                    <span className="truncate max-w-[140px]">{img.name}</span>
+                    <span className="truncate max-w-[140px]">
+                      {img.name}
+                    </span>
+
                     <button
                       type="button"
                       onClick={() => removeImage(idx)}
@@ -212,11 +233,15 @@ export default function AddProduct({ brands, categories, refresh }: any) {
             <select
               value={product.brand}
               onChange={(e) =>
-                setProduct({ ...product, brand: e.target.value })
+                setProduct({
+                  ...product,
+                  brand: e.target.value,
+                })
               }
               className="w-full border border-slate-200 p-3 rounded-lg"
             >
               <option value="">Select Brand</option>
+
               {brands.map((b: any) => (
                 <option key={b._id} value={b.slug}>
                   {b.name}
@@ -235,11 +260,15 @@ export default function AddProduct({ brands, categories, refresh }: any) {
             <select
               value={product.category}
               onChange={(e) =>
-                setProduct({ ...product, category: e.target.value })
+                setProduct({
+                  ...product,
+                  category: e.target.value,
+                })
               }
               className="w-full border border-slate-200 p-3 rounded-lg"
             >
               <option value="">Select Category</option>
+
               {categories.map((c: any) => (
                 <option key={c._id} value={c.slug}>
                   {c.name}
@@ -254,12 +283,36 @@ export default function AddProduct({ brands, categories, refresh }: any) {
           <label className="text-sm font-semibold text-slate-700">
             ₹ Price
           </label>
+
           <input
             type="number"
             placeholder="Enter price"
             value={product.price}
             onChange={(e) =>
-              setProduct({ ...product, price: e.target.value })
+              setProduct({
+                ...product,
+                price: e.target.value,
+              })
+            }
+            className="w-full border border-slate-200 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+          />
+        </div>
+
+        {/* Discount */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-semibold text-slate-700">
+            Discount Offer
+          </label>
+
+          <input
+            type="text"
+            placeholder="Example: 15% OFF"
+            value={product.discount}
+            onChange={(e) =>
+              setProduct({
+                ...product,
+                discount: e.target.value,
+              })
             }
             className="w-full border border-slate-200 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
@@ -271,10 +324,14 @@ export default function AddProduct({ brands, categories, refresh }: any) {
             <Info className="w-4 h-4" />
             Description Paragraph 1
           </label>
+
           <textarea
             value={product.paragraph1}
             onChange={(e) =>
-              setProduct({ ...product, paragraph1: e.target.value })
+              setProduct({
+                ...product,
+                paragraph1: e.target.value,
+              })
             }
             className="w-full border border-slate-200 p-4 rounded-lg h-28 resize-none"
           />
@@ -285,10 +342,14 @@ export default function AddProduct({ brands, categories, refresh }: any) {
           <label className="text-sm font-semibold text-slate-700">
             Description Paragraph 2
           </label>
+
           <textarea
             value={product.paragraph2}
             onChange={(e) =>
-              setProduct({ ...product, paragraph2: e.target.value })
+              setProduct({
+                ...product,
+                paragraph2: e.target.value,
+              })
             }
             className="w-full border border-slate-200 p-4 rounded-lg h-28 resize-none"
           />
@@ -307,9 +368,12 @@ export default function AddProduct({ brands, categories, refresh }: any) {
                 type="text"
                 placeholder={`Bullet Point ${index + 1}`}
                 value={item}
-                onChange={(e) => updateBullet(index, e.target.value)}
+                onChange={(e) =>
+                  updateBullet(index, e.target.value)
+                }
                 className="w-full border border-slate-200 p-3 rounded-lg"
               />
+
               <button
                 type="button"
                 onClick={() => removeBullet(index)}

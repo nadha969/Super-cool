@@ -20,6 +20,7 @@ export async function POST(req: Request) {
     const brand = formData.get("brand") as string;
     const price = formData.get("price") as string;
     const category = formData.get("category") as string;
+    const discount = formData.get("discount");
 
     const descriptionRaw = formData.get(
       "description"
@@ -67,6 +68,7 @@ export async function POST(req: Request) {
         brand,
         category,
         price,
+        discount,
 
         // Save images array
         images: imageUrls,

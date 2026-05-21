@@ -38,25 +38,28 @@ export default async function Carriercategory({
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product: any) => (
-            <div
+            <Link
               key={product._id}
-              className="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col"
+              href={`/brands/${brand}/${category}/${product.slug}`}
+              className="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition duration-300"
             >
+              {/* Product Image */}
               <div className="relative p-6">
                 <div className="relative w-full h-40">
-                       <Image
-  src={
-    product.images?.[0] ||
-    product.image ||
-    "/placeholder.jpg"
-  }
-  alt={product.name}
-  fill
-  className="object-contain"
-/>
+                  <Image
+                    src={
+                      product.images?.[0] ||
+                      product.image ||
+                      "/placeholder.jpg"
+                    }
+                    alt={product.name}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
 
+              {/* Product Info */}
               <div className="p-4 flex flex-col flex-grow">
                 <h3 className="font-bold text-lg mb-1">
                   {product.name}
@@ -66,16 +69,14 @@ export default async function Carriercategory({
                   {product.brand}
                 </p>
 
+                {/* Button */}
                 <div className="mt-auto">
-                  <Link
-                    href={`/brands/${brand}/${category}/${product.slug}`}
-                    className="block text-center bg-[#1a2b6d] text-white py-2 rounded-full"
-                  >
+                  <div className="block text-center bg-[#1a2b6d] hover:bg-[#121e4d] text-white py-2 rounded-full transition">
                     View Details
-                  </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
 
           {filteredProducts.length === 0 && (

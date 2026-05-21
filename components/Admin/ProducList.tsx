@@ -202,6 +202,7 @@ export default function ProductList({
                 <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Price
                 </th>
+                
 
                 <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Actions
@@ -467,6 +468,19 @@ const src =
                     }
                   />
                 </Field>
+
+                          <Field label="Discount">
+            <InputField
+              editing={editing}
+              value={selected.discount}
+              onChange={(v: string) =>
+                setSelected({
+                  ...selected,
+                  discount: v,
+                })
+              }
+            />
+          </Field>
 
                 <Field label="Brand">
                   {editing ? (

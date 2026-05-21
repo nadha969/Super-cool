@@ -16,6 +16,10 @@ const ProductSchema = new mongoose.Schema(
       paragraph2: String,
       bullets: [String],
     },
+    discount: {
+  type: String,
+  default: "",
+},
 
     specs: {
       model: { type: String },

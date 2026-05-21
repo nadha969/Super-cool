@@ -155,7 +155,7 @@ export default function ProductPage({
               AED{" "}
               {Number(
                 item.price || 0
-              ).toLocaleString()}
+              ).toLocaleString()} <span className="text-xs">+5% VAT</span>
             </div>
 
             {/* Description */}

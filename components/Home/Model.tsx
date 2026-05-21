@@ -52,27 +52,54 @@ export default function TrendingModels() {
                 ease: "easeOut",
               }}
               whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }} // 👈 mobile click animation
+              whileTap={{ scale: 0.97 }}
               className="group bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden"
             >
               {/* Image */}
               <Link
                 href={`/brands/${product.brand}/${product.category}/${product.slug}`}
               >
-                <div className="relative h-64 flex items-center justify-center bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-                 <Image
-  src={
-    product.images?.[0] ||
-    product.image ||
-    "/placeholder.jpg"
-  }
-  alt={product.name}
-  width={260}
-  height={220}
-  className="object-contain transition-transform duration-500 group-hover:scale-110"
-/>
-                </div>
+              <div className="relative h-64 flex items-center justify-center bg-gradient-to-b from-gray-50 to-white overflow-hidden">
 
+  {/* Discount Badge */}
+  {product.discount && (
+    <div className="absolute top-3 right-3 bg-[#1a2b6d] text-white text-sm font-bold px-4 py-2 rounded-full shadow-md z-20">
+      {product.discount}
+    </div>
+  )}
+
+  {/* Default Image */}
+  <Image
+    src={
+      product.images?.[0] ||
+      product.image ||
+      "/placeholder.jpg"
+    }
+    alt={product.name}
+    width={260}
+    height={220}
+    className={`
+      object-contain absolute transition-all duration-500
+      ${product.images?.[1] ? "group-hover:opacity-0" : ""}
+    `}
+  />
+
+  {/* Hover Image */}
+  {product.images?.[1] && (
+    <Image
+      src={product.images[1]}
+      alt={product.name}
+      width={260}
+      height={220}
+      className="
+        object-contain absolute opacity-0
+        group-hover:opacity-100
+        transition-all duration-500
+        scale-95 group-hover:scale-110
+      "
+    />
+  )}
+</div>
                 <div className="p-5">
                   <p className="text-xs uppercase text-[#05305C] font-semibold">
                     {product.brand}
@@ -92,7 +119,8 @@ export default function TrendingModels() {
               <div className="px-5 pb-5">
                 <Link
                   href={`/brands/${product.brand}/${product.category}/${product.slug}`}
-                  className="block w-full text-center bg-[#05305C] text-white py-3 rounded-xl font-semibold hover:bg-[#05305C]/90 active:scale-95 transition">
+                  className="block w-full text-center bg-[#05305C] text-white py-3 rounded-xl font-semibold hover:bg-[#05305C]/90 active:scale-95 transition"
+                >
                   View Details
                 </Link>
               </div>

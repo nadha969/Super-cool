@@ -13,7 +13,7 @@ export default function Collection() {
     },
     {
       title: "WINDOW AC",
-      slug: "window-ac",
+      slug: "window",
       img: "https://i5.walmartimages.com/asr/de85ce3a-e7fa-470a-9dcf-2a61cb481a2b_1.ccb638382c7bb85af4c6b01e373ef4c3.jpeg",
     },
     {
