@@ -23,7 +23,7 @@ export default function Brands() {
     {
       name: "supergeneral",
       image:
-        "https://tse4.mm.bing.net/th/id/OIP.ooHds0sZmQ9G5lXX3675VgHaBs?rs=1&pid=ImgDetMain&o=7&rm=3",
+        "/logo/supergeneral.jpeg",
     },
     {
       name: "midea",
