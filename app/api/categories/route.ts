@@ -14,7 +14,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const categories = await Category.find({hidden:false}).sort({
+    const categories = await Category.find({}).sort({
       createdAt: -1,
     });
 
