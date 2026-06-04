@@ -16,7 +16,12 @@ export async function POST(req: Request) {
     const formData = await req.formData();
 
     const name = formData.get("name") as string;
-    const slug = formData.get("slug") as string;
+    const rawSlug = formData.get("slug") as string;
+
+const slug = rawSlug
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/^-|-$/g, "");
     const brand = formData.get("brand") as string;
     const price = formData.get("price") as string;
     const category = formData.get("category") as string;

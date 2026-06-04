@@ -20,14 +20,16 @@ export default function Footer() {
               width={150}
               height={60}
             />
-
-            <p className="text-gray-700 underline cursor-pointer">
-              +971 569011041
-            </p>
-
-            <p className="text-gray-700 underline cursor-pointer">
-              sales@acmartuae.com
-            </p>
+  <a
+    href="tel:+971569011041"
+    className="text-gray-700 underline cursor-pointer"
+  >
+    +971 569011041
+  </a><br />
+         <a
+  href="mailto:sales@acmartuae.com"
+   className="text-gray-700 underline cursor-pointer mt-4">
+  sales@acmartuae.com</a>
           </div>
 
           {/* Quick Links */}
@@ -35,7 +37,7 @@ export default function Footer() {
             <h3 className="font-semibold mb-4 text-gray-900">Quick links</h3>
             <ul className="space-y-3 text-gray-600">
               <li><Link href="#">About Us</Link></li>
-              <li><Link href="#">Contact Us</Link></li>
+              <li><Link href="contact">Contact Us</Link></li>
               <li><Link href="privacypolicy">Privacy Policy</Link></li>
               <li><Link href="refundpolicy">Refund Policy</Link></li>
               <li><Link href="termsandconditions">Terms & Conditions</Link></li>
