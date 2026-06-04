@@ -25,7 +25,10 @@ const ProductSchema = new mongoose.Schema(
       model: { type: String },
       btu: { type: String }
     },
-
+hidden: {
+  type: Boolean,
+  default: false,
+},
     featured: { type: Boolean, default: false }
   },
   { timestamps: true }

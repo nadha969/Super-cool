@@ -36,11 +36,11 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4 text-gray-900">Quick links</h3>
             <ul className="space-y-3 text-gray-600">
-              <li><Link href="#">About Us</Link></li>
-              <li><Link href="contact">Contact Us</Link></li>
-              <li><Link href="privacypolicy">Privacy Policy</Link></li>
-              <li><Link href="refundpolicy">Refund Policy</Link></li>
-              <li><Link href="termsandconditions">Terms & Conditions</Link></li>
+              <li><Link href="/aboutus">About Us</Link></li>
+              <li><Link href="/contact">Contact Us</Link></li>
+              <li><Link href="/privacypolicy">Privacy Policy</Link></li>
+              <li><Link href="/refundpolicy">Refund Policy</Link></li>
+              <li><Link href="/termsandconditions">Terms & Conditions</Link></li>
             </ul>
           </div>
 

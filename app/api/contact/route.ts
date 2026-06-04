@@ -23,14 +23,15 @@ export async function POST(req: Request) {
       phone,
       message,
     });
-
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS length:", process.env.EMAIL_PASS?.length);
     // Email transporter
-  const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   host: "smtp.titan.email",
-  port: 587,
-  secure: false,
+  port: 465,
+  secure: true,
   auth: {
-    user: "sales@acmartuae.com",
+    user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
 });

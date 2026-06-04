@@ -103,7 +103,7 @@ export async function GET() {
   await connectDB();
 
   const products =
-    await Product.find().sort({
+    await Product.find({ hidden: false }).sort({
       createdAt: -1,
     });
 

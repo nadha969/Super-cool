@@ -6,14 +6,14 @@ export async function GET() {
   try {
     await connectDB();
 
-    let products = await Product.find({
+    let products = await Product.find({hidden:false,
       featured: true,
-    }).limit(8);
+    }).limit(16);
 
     if (products.length === 0) {
       products = await Product.find()
         .sort({ createdAt: -1 })
-        .limit(8);
+        .limit(16);
     }
 
     return NextResponse.json(products);

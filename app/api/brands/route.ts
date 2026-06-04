@@ -7,7 +7,7 @@ export async function GET() {
   try {
     await connectDB();
 
-    const brands = await Brand.find().sort({
+    const brands = await Brand.find({hidden:false}).sort({
       createdAt: -1,
     });
 

@@ -24,15 +24,15 @@ export default function ProductList({
 
   const openModal = (item: any) => {
   setSelected({
-    ...item,
-
-    images:
-      item.images?.length
-        ? item.images
-        : item.image
-        ? [item.image]
-        : [],
-  });
+  ...item,
+  hidden: item.hidden || false,
+  images:
+    item.images?.length
+      ? item.images
+      : item.image
+      ? [item.image]
+      : [],
+});
 
   setEditing(false);
 };
@@ -468,6 +468,32 @@ const src =
                     }
                   />
                 </Field>
+
+                <Field label="Visibility">
+  {editing ? (
+    <div className="flex items-center gap-3">
+      <input
+        type="checkbox"
+        checked={selected.hidden || false}
+        onChange={(e) =>
+          setSelected({
+            ...selected,
+            hidden: e.target.checked,
+          })
+        }
+      />
+      <span>Hide Product</span>
+    </div>
+  ) : (
+    <ReadOnlyText
+      value={
+        selected.hidden
+          ? "Hidden"
+          : "Visible"
+      }
+    />
+  )}
+</Field>
 
                           <Field label="Discount">
             <InputField

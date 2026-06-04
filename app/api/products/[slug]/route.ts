@@ -86,7 +86,7 @@ export async function PUT(
         price: body.price,
         description: body.description,
         discount: body.discount,
-
+         hidden: body.hidden,
         images: body.images,
       },
       { new: true }

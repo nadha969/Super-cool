@@ -10,13 +10,14 @@ export default function Home() {
   <div>
     <Header/>
     <div className="mt-20">
-       <Image
-          src="/logo/homeimage.jpeg"
-          alt="Wall Split Banner"
-          width={400}
-          height={100}
-          unoptimized
-          className="w-full h-3/ sm:mt-30" />
+       {/* <Image
+  src="/logo/homeimage.jpeg"
+  alt="Wall Split Banner"
+  width={1920}
+  height={500}
+  unoptimized
+  className="w-full h-auto"
+/> */}
     </div>
     <Collection/>
     <Brands/>
