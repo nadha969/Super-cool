@@ -74,9 +74,9 @@ export default function Footer() {
       {/* Social Section */}
       <div className="bg-[#05305C] py-6">
         <div className="flex justify-center gap-6 text-white">
-          <Facebook className="cursor-pointer hover:scale-110 transition" />
+          {/* <Facebook className="cursor-pointer hover:scale-110 transition" />
           <Instagram className="cursor-pointer hover:scale-110 transition" />
-          <Linkedin className="cursor-pointer hover:scale-110 transition" />
+          <Linkedin className="cursor-pointer hover:scale-110 transition" /> */}
         </div>
       </div>
 

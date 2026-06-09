@@ -4,6 +4,7 @@ import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
 import Image from "next/image";
 import { BASE_URL } from "@/lib/api";
+import { FiPhone } from "react-icons/fi";
 import {
   use,
   useEffect,
@@ -218,6 +219,16 @@ export default function ProductPage({
                 )}
               </ul>
             </div>
+<div className="mt-10">
+              {/* Call for Enquiry Button */}
+<a
+  href="tel:++971 569011041"
+  className="inline-flex items-center gap-2 bg-[#17416b] hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition duration-300"
+>
+  <FiPhone size={20} />
+  Call for Enquiry
+</a>
+</div>
           </div>
         </div>
       </div>
