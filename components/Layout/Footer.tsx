@@ -26,10 +26,12 @@ export default function Footer() {
   >
     +971 569011041
   </a><br /> 
-         <a
+       <div className="mt-4">
+          <a
   href="mailto:sales@acmartuae.com"
-   className="text-gray-700 underline cursor-pointer pt-10">
+   className="text-gray-700 underline cursor-pointer ">
   sales@acmartuae.com</a>
+       </div>
           </div>
 
           {/* Quick Links */}
