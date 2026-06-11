@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-\import Header from "../Layout/Header";
+import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import { BASE_URL } from "@/lib/api";
 
