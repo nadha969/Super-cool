@@ -25,7 +25,7 @@ export default function Footer() {
     className="text-gray-700 underline cursor-pointer"
   >
     +971 569011041
-  </a><br />
+  </a><br /> <br/>
          <a
   href="mailto:sales@acmartuae.com"
    className="text-gray-700 underline cursor-pointer mt-4">
