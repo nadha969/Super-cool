@@ -27,12 +27,12 @@ console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS length:", process.env.EMAIL_PASS?.length);
     // Email transporter
 const transporter = nodemailer.createTransport({
-  host: "smtp.titan.email",
+  host: "smtpout.secureserver.net",
   port: 465,
   secure: true,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user:process.env.EMAIL_USER,
+    pass:process.env.EMAIL_PASS
   },
 });
 

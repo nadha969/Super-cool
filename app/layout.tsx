@@ -34,6 +34,7 @@ export default function RootLayout({
     >
 
       {children}
+      
       <WhatsAppButton />
  <ToastContainer position="top-right" autoClose={2000} />
     </body>
