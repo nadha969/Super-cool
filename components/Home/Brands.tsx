@@ -38,7 +38,7 @@ export default function Brands() {
     {
       name: "finpower",
       image:
-        "/logo/fin-power.png",
+        "/logo/finpower.jpeg",
     },
     {
       name: "hisense",
@@ -60,8 +60,7 @@ export default function Brands() {
         Shop By Brands
       </motion.h4>
 
-      <div className="flex flex-wrap justify-center gap-6">
-        {brands.map((brand, index) => (
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto justify-items-center">      {brands.map((brand, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 0.5 }}
