@@ -54,6 +54,8 @@ export default function Footer() {
               <li><Link href="/categories/floor-stand">Floor Standing</Link></li>
               <li><Link href="/categories/cassatte">Cassette AC</Link></li>
               <li><Link href="/categories/ducted-unit">Ducted Units</Link></li>
+              <li><Link href="/categories/package-unit">Package Unit</Link></li>
+
             </ul>
           </div>
 

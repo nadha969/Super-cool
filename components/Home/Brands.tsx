@@ -30,6 +30,21 @@ export default function Brands() {
       image:
         "https://tse2.mm.bing.net/th/id/OIP.Ago0ZNmTbMk2HNgQpS7jCQHaC_?rs=1&pid=ImgDetMain&o=7&rm=3",
     },
+     {
+      name: "lg",
+      image:
+        "/logo/lg-logo.png",
+    },
+    {
+      name: "finpower",
+      image:
+        "/logo/fin-power.png",
+    },
+    {
+      name: "hisense",
+      image:
+        "/logo/hisense-logo.png",
+    }
   ];
 
   return (
