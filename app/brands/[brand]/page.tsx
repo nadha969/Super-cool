@@ -1,6 +1,9 @@
 import Carrier from "@/components/Carrier/carrier";
 import Daikin from "@/components/Carrier/daikin";
 import TCLCollection from "@/components/Carrier/diakool";
+import Finpower from "@/components/Carrier/finpower";
+import Hisense from "@/components/Carrier/hisense";
+import LG from "@/components/Carrier/lg";
 import Midea from "@/components/Carrier/midea";
 import OGeneral from "@/components/Carrier/o-general";
 import Supergeneral from "@/components/Carrier/supergeneral";
@@ -30,6 +33,14 @@ export default async function BrandPage({ params }: any) {
    if (brand === "supergeneral") {
     return <Supergeneral />;
   }
-
+   if (brand === "lg") {
+    return <LG />;
+   }
+   if(brand==="hisense"){
+    return<Hisense/>
+   }
+   if(brand==="finpower"){
+     return<Finpower/>
+   }
   return <div>Brand not found</div>;
 }

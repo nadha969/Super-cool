@@ -41,7 +41,11 @@ export default function Header() {
             <Link className="hover:underline hover:text-black" href="/brands/midea">Midea</Link>
             <Link className="hover:underline hover:text-black" href="/brands/o-general">O General</Link>
             <Link className="hover:underline hover:text-black" href="/brands/tcl">TCL</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/lg">LG</Link>
             <Link className="hover:underline hover:text-black" href="/brands/supergeneral">Super General</Link>
+           <Link className="hover:underline hover:text-black" href="/brands/finpower">Finpower</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/hisense">Hisense</Link>
+
           </nav>
 
           {/* Right Icons */}
@@ -71,7 +75,10 @@ export default function Header() {
               <Link href="/brands/midea" onClick={() => setMenuOpen(false)}>Midea</Link>
               <Link href="/brands/o-general" onClick={() => setMenuOpen(false)}>O General</Link>
               <Link href="/brands/tcl" onClick={() => setMenuOpen(false)}>TCL</Link>
+              <Link href="/brands/lg" onClick={() => setMenuOpen(false)}>LG</Link>
               <Link href="/brands/supergeneral" onClick={() => setMenuOpen(false)}>Super General</Link>
+              <Link href="/brands/finpower" onClick={() => setMenuOpen(false)}>Finpower</Link>
+              <Link href="/brands/hisense" onClick={() => setMenuOpen(false)}>Hisense</Link>
             </nav>
           </div>
         )}
