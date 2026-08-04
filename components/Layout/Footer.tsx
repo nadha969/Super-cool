@@ -21,10 +21,10 @@ export default function Footer() {
               height={60}
             />
   <a
-    href="tel:+971569011041"
+    href="tel:+971555661042"
     className="text-gray-700 underline cursor-pointer"
   >
-    +971 569011041
+   +971 555 66 1042
   </a><br /> 
        <div className="mt-4">
           <a

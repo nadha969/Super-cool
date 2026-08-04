@@ -117,7 +117,7 @@ toast.success("Message sent successfully!");
           href="tel:+971569011041"
           className="text-base sm:text-lg hover:text-blue-300"
         >
-          +971 569011041
+         +971 555 66 1042
         </a>
       </div>
     </div>
