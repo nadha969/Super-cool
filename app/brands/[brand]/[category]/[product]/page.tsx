@@ -222,7 +222,7 @@ export default function ProductPage({
 <div className="mt-10">
               {/* Call for Enquiry Button */}
 <a
-  href="tel:++971 569011041"
+  href="tel:+971 547 400 992"
   className="inline-flex items-center gap-2 bg-[#17416b] hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition duration-300"
 >
   <FiPhone size={20} />
