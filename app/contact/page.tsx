@@ -154,7 +154,9 @@ toast.success("Message sent successfully!");
         </p>
 
         <p className="text-base sm:text-lg leading-7">
-          Dubai
+          Shams Business Centre, Media City 
+          <br/>
+          Al Messaned , Sharjah
           <br />
           United Arab Emirates
         </p>

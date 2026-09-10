@@ -52,7 +52,7 @@ export default function Footer() {
               <li><Link href="/categories/wall-split">Wall Split</Link></li>
               <li><Link href="/categories/window">Window AC</Link></li>
               <li><Link href="/categories/floor-stand">Floor Standing</Link></li>
-              <li><Link href="/categories/cassatte">Cassette AC</Link></li>
+              <li><Link href="/categories/cassatte-unit">Cassette AC</Link></li>
               <li><Link href="/categories/ducted-unit">Ducted Units</Link></li>
               <li><Link href="/categories/package-unit">Package Unit</Link></li>
 
