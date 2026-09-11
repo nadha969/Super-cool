@@ -4,7 +4,7 @@ import Footer from "@/components/Layout/Footer";
 import Header from "@/components/Layout/Header";
 import Image from "next/image";
 import { BASE_URL } from "@/lib/api";
-import { FiPhone } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import {
   use,
   useEffect,
@@ -222,15 +222,56 @@ export default function ProductPage({
 <div className="mt-10">
               {/* Call for Enquiry Button */}
 <a
-  href="tel:+971 547 400 992"
+  href="https://api.whatsapp.com/send?phone=+971547400992"
   className="inline-flex items-center gap-2 bg-[#17416b] hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition duration-300"
 >
-  <FiPhone size={20} />
-  Call for Enquiry
+  <FaWhatsapp size={20} />
+  For Enquiry
 </a>
+{/* Shop With Confidence */}
+<section className="border-t border-gray-200 mt-8 text-gray-700">
+  <div className="max-w-4xl mx-auto px-6 py-5">
+
+    <h2 className="text-xl font-bold tracking-wide mb-6">
+      SHOP WITH CONFIDENCE
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+      {/* Fast Delivery */}
+      <div className="flex flex-col items-center text-center">
+        <div className="text-4xl mb-4">🚚</div>
+        <h3 className="text-lg font-bold">
+          Fast Delivery
+        </h3>
+      </div>
+
+      {/* Secure Payments */}
+      <div className="flex flex-col items-center text-center">
+        <div className="text-4xl mb-4">🛡️</div>
+        <h3 className="text-lg font-bold">
+          Secure Payments
+        </h3>
+      </div>
+
+      {/* Trusted Quality */}
+      <div className="flex flex-col items-center text-center">
+        <div className="text-4xl mb-4">✓</div>
+        <h3 className="text-lg font-bold">
+          Trusted Quality
+        </h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 </div>
+
           </div>
         </div>
+        
       </div>
 
       <Footer />
