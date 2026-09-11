@@ -28,7 +28,7 @@ export default function Collection() {
     },
     {
       title: "PACKAGE UNIT",
-      slug: "package-unit",
+      slug: "package",
       img: "/products/packageunit.jpeg",
     },
     {
