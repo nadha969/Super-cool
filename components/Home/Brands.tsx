@@ -36,9 +36,21 @@ export default function Brands() {
         "/logo/lg-logo.png",
     },
     {
-      name: "finpower",
+      name: "gree",
       image:
-        "/logo/finpower.jpeg",
+        "/logo/gree.jpeg",
+    },
+    {
+      name:"hitachi",
+      image:"/logo/Hitcahi.png"
+    },
+    {
+      name:"tcl",
+      image:"/logo/tcl.png"
+    },
+    {
+      name:"trane",
+      image:"/logo/trane.png"
     },
     {
       name: "hisense",

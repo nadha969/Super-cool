@@ -1,12 +1,14 @@
 import Carrier from "@/components/Carrier/carrier";
 import Daikin from "@/components/Carrier/daikin";
 import TCLCollection from "@/components/Carrier/diakool";
-import Finpower from "@/components/Carrier/finpower";
+import Gree from "@/components/Carrier/gree";
 import Hisense from "@/components/Carrier/hisense";
+import Hitachi from "@/components/Carrier/hitachi";
 import LG from "@/components/Carrier/lg";
 import Midea from "@/components/Carrier/midea";
 import OGeneral from "@/components/Carrier/o-general";
 import Supergeneral from "@/components/Carrier/supergeneral";
+import Trane from "@/components/Carrier/trane";
 
 export default async function BrandPage({ params }: any) {
   const { brand } = await params;
@@ -39,8 +41,14 @@ export default async function BrandPage({ params }: any) {
    if(brand==="hisense"){
     return<Hisense/>
    }
-   if(brand==="finpower"){
-     return<Finpower/>
+   if(brand==="hitachi"){
+    return<Hitachi/>
+   }
+   if(brand==="trane"){
+    return<Trane/>
+   }
+   if(brand==="gree"){
+     return<Gree/>
    }
   return <div>Brand not found</div>;
 }

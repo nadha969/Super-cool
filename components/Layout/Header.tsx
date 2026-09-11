@@ -43,7 +43,9 @@ export default function Header() {
             <Link className="hover:underline hover:text-black" href="/brands/tcl">TCL</Link>
             <Link className="hover:underline hover:text-black" href="/brands/lg">LG</Link>
             <Link className="hover:underline hover:text-black" href="/brands/supergeneral">Super General</Link>
-           <Link className="hover:underline hover:text-black" href="/brands/finpower">Finpower</Link>
+           <Link className="hover:underline hover:text-black" href="/brands/hitachi">Hitachi</Link>
+           <Link className="hover:underline hover:text-black" href="/brands/gree">Gree</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/trane">Trane</Link>
             <Link className="hover:underline hover:text-black" href="/brands/hisense">Hisense</Link>
 
           </nav>
@@ -77,7 +79,9 @@ export default function Header() {
               <Link href="/brands/tcl" onClick={() => setMenuOpen(false)}>TCL</Link>
               <Link href="/brands/lg" onClick={() => setMenuOpen(false)}>LG</Link>
               <Link href="/brands/supergeneral" onClick={() => setMenuOpen(false)}>Super General</Link>
-              <Link href="/brands/finpower" onClick={() => setMenuOpen(false)}>Finpower</Link>
+              <Link href="/brands/gree" onClick={() => setMenuOpen(false)}>Gree</Link>
+              <Link href="/brands/hitachi" onClick={() => setMenuOpen(false)}>Hitachi</Link>
+              <Link href="/brands/trane" onClick={() => setMenuOpen(false)}>Trane</Link>
               <Link href="/brands/hisense" onClick={() => setMenuOpen(false)}>Hisense</Link>
             </nav>
           </div>

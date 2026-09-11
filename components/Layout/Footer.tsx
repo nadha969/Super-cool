@@ -72,7 +72,8 @@ export default function Footer() {
               <li><Link href="/brands/o-general">O General</Link></li>
               <li><Link href="/brands/lg">LG</Link></li>
               <li><Link href="/brands/tcl">TCL</Link></li>
-              <li><Link href="/brands/finpower">Finpower</Link></li>
+              <li><Link href="/brands/gree">Gree</Link></li>
+              <li><Link href="/brands/trane">Trane</Link></li>
               <li><Link href="/brands/hisense">Hisense</Link></li>
             </ul>
           </div>

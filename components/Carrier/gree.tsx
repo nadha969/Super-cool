@@ -15,9 +15,9 @@ type Category = {
   image?: string;
 };
 
-// Fetch Finpower Products
+// Fetch gree Products
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch(`${BASE_URL}/api/brands/finpower`, {
+  const res = await fetch(`${BASE_URL}/api/brands/gree`, {
     cache: "no-store",
   });
 
@@ -41,7 +41,7 @@ async function getCategories(): Promise<Category[]> {
   return res.json();
 }
 
-export default async function Finpower() {
+export default async function Gree() {
   const products = await getProducts();
   const allCategories = await getCategories();
 
@@ -50,7 +50,7 @@ export default async function Finpower() {
       <div>
         <Header />
         <div className="text-center py-20 text-xl">
-          No Finpower products found
+          No Gree products found
         </div>
         <Footer />
       </div>
@@ -76,7 +76,7 @@ export default async function Finpower() {
       {/* Hero Section */}
       <main className="pt-30 flex-1">
         <h1 className="text-center text-3xl font-semibold bg-gray-100 py-10">
-          Finpower Air Conditioners Collection
+          Gree Air Conditioners Collection
         </h1>
       </main>
 
@@ -84,9 +84,9 @@ export default async function Finpower() {
       <section className="max-w-7xl mx-auto px-4 py-12">
         <div className="pb-10">
           <p className="text-center text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Finpower Air Conditioners are designed to deliver powerful cooling,
+            Gree Air Conditioners are designed to deliver powerful cooling,
             superior energy efficiency, and long-lasting performance. Whether
-            for homes, offices, or commercial spaces, Finpower offers reliable
+            for homes, offices, or commercial spaces, Gree offers reliable
             climate control with advanced technology and modern design.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default async function Finpower() {
           {categoryData.map((cat, index) => (
             <Link
               key={index}
-              href={`/brands/finpower/${cat.slug}`}
+              href={`/brands/gree/${cat.slug}`}
               className="group relative border border-gray-200 rounded-2xl p-6 bg-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden"
             >
               {/* Hover Background */}
