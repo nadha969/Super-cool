@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -20,20 +20,32 @@ export default function Footer() {
               width={150}
               height={60}
             />
-  <a
-    href="tel:+971547400992"
-    className="text-gray-700 underline cursor-pointer"
-  >
-   +971 547 400 992
-  </a><br /> 
-       <div className="mt-4">
-          <a
-  href="mailto:sales@acmartuae.com"
-   className="text-gray-700 underline cursor-pointer ">
-  sales@acmartuae.com</a>
-
+           <h3 className="font-semibold mb-4 text-gray-900">Contact Us</h3>
+ 
+    <a
+  href="tel:+971547400992"
+  className="flex items-center gap-2 text-gray-700 underline cursor-pointer"
+>
+  <Phone size={20} strokeWidth={1.8} />
+  +971 547 400 992
+</a>
   
-       </div>
+     <div className="mt-4">
+  <a
+    href="mailto:sales@acmartuae.com"
+    className="flex items-center gap-2 text-gray-700 underline cursor-pointer">
+    <Mail size={20} strokeWidth={1.8} />
+    sales@acmartuae.com
+  </a>
+</div>
+<h3 className="leading-7 text-gray-700 flex">
+     <MapPin size={20} strokeWidth={1.8} />
+          Shams Business Centre, Media City 
+          <br/>
+          Al Messaned , Sharjah
+          <br />
+          United Arab Emirates
+        </h3>
           </div>
 
           {/* Quick Links */}
@@ -84,9 +96,9 @@ export default function Footer() {
       {/* Social Section */}
       <div className="bg-[#05305C] py-6">
         <div className="flex justify-center gap-6 text-white">
-          {/* <Facebook className="cursor-pointer hover:scale-110 transition" />
+          <Facebook className="cursor-pointer hover:scale-110 transition" />
           <Instagram className="cursor-pointer hover:scale-110 transition" />
-          <Linkedin className="cursor-pointer hover:scale-110 transition" /> */}
+          <Linkedin className="cursor-pointer hover:scale-110 transition" />
         </div>
       </div>
 
