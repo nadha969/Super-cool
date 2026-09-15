@@ -76,6 +76,7 @@ export async function PUT(
 
     const { slug } = await context.params;
     const body = await req.json();
+    
 
     const updatedProduct = await Product.findOneAndUpdate(
       { slug },
@@ -86,12 +87,12 @@ export async function PUT(
         price: body.price,
         description: body.description,
         discount: body.discount,
-         hidden: body.hidden,
+        hidden: Boolean(body.hidden),
+        outOfStock: Boolean(body.outOfStock),
         images: body.images,
       },
       { new: true }
     );
-
     if (!updatedProduct) {
       return NextResponse.json(
         { message: "Product not found" },

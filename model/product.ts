@@ -29,6 +29,10 @@ hidden: {
   type: Boolean,
   default: false,
 },
+outOfStock: {
+  type: Boolean,
+  default: false,
+},
     featured: { type: Boolean, default: false }
   },
   { timestamps: true }

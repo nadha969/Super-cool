@@ -45,20 +45,27 @@ export default async function Carriercategory({
               className="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition duration-300"
             >
               {/* Product Image */}
-              <div className="relative p-6">
-                <div className="relative w-full h-40">
-                  <Image
-                    src={
-                      product.images?.[0] ||
-                      product.image ||
-                      "/placeholder.jpg"
-                    }
-                    alt={product.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
+             <div className="relative p-6">
+  <div className="relative w-full h-40">
+    <Image
+      src={
+        product.images?.[0] ||
+        product.image ||
+        "/placeholder.jpg"
+      }
+      alt={product.name}
+      fill
+      className="object-contain"
+    />
+  </div>
+
+  {/* Out of Stock Badge */}
+  {product.outOfStock && (
+  <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+    OUT OF STOCK
+  </div>
+)}
+</div>
 
               {/* Product Info */}
               <div className="p-4 flex flex-col flex-grow">

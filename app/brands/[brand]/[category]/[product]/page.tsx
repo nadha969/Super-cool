@@ -143,9 +143,17 @@ export default function ProductPage({
 </div>
           {/* Product Details */}
           <div>
-            <h1 className="text-3xl font-bold mb-4">
-              {item.name}
-            </h1>
+           <div className="flex items-center gap-3 flex-wrap mb-4">
+  <h1 className="text-3xl font-bold">
+    {item.name}
+  </h1>
+
+  {item.outOfStock && (
+    <span className="bg-red-600 text-white text-sm font-bold px-3 py-1 rounded-full">
+      OUT OF STOCK
+    </span>
+  )}
+</div>
 
             <p className="text-blue-600 font-semibold mb-3 uppercase">
               {item.brand}

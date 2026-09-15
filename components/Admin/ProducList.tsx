@@ -26,6 +26,7 @@ export default function ProductList({
   setSelected({
   ...item,
   hidden: item.hidden || false,
+  outOfStock: item.outOfStock || false,
   images:
     item.images?.length
       ? item.images
@@ -86,7 +87,10 @@ export default function ProductList({
     const payload = {
       ...selected,
       image: selected.images?.[0] || "",
-    };
+      outOfStock: selected.outOfStock || false,
+};
+
+console.log("SAVE PAYLOAD:", payload);
 
     const res = await fetch(
       `/api/products/${selected.slug}`,
@@ -203,6 +207,9 @@ export default function ProductList({
                   Price
                 </th>
                 
+                   <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">
+  Status
+</th>
 
                 <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Actions
@@ -245,7 +252,17 @@ export default function ProductList({
                     <td className="px-6 py-4 font-medium text-slate-700">
                      {item.price || "-"}
                     </td>
-
+<td className="px-6 py-4">
+  {item.outOfStock ? (
+    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-600">
+      Out of Stock
+    </span>
+  ) : (
+    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-600">
+      Available
+    </span>
+  )}
+</td>
                     <td className="px-6 py-4 text-right">
                       <button
                         onClick={(e) => {
@@ -274,7 +291,7 @@ export default function ProductList({
               ) : (
                 <tr>
                   <td
-                    colSpan={5}
+                    colSpan={6}
                     className="px-6 py-12 text-center text-slate-400"
                   >
                     No products found.
@@ -469,32 +486,53 @@ const src =
                   />
                 </Field>
 
-                <Field label="Visibility">
+       <Field label="Product Status">
   {editing ? (
-    <div className="flex items-center gap-3">
-      <input
-        type="checkbox"
-        checked={selected.hidden || false}
-        onChange={(e) =>
-          setSelected({
-            ...selected,
-            hidden: e.target.checked,
-          })
-        }
-      />
-      <span>Hide Product</span>
+    <div className="space-y-3">
+
+      {/* Hide Product */}
+      <label className="flex items-center gap-3">
+        <input
+          type="checkbox"
+          checked={selected.hidden || false}
+          onChange={(e) =>
+            setSelected({
+              ...selected,
+              hidden: e.target.checked,
+            })
+          }
+        />
+        <span>Hide Product</span>
+      </label>
+
+      {/* Out of Stock */}
+      <label className="flex items-center gap-3">
+        <input
+          type="checkbox"
+          checked={selected.outOfStock || false}
+          onChange={(e) =>
+            setSelected({
+              ...selected,
+              outOfStock: e.target.checked,
+            })
+          }
+        />
+        <span>Out of Stock</span>
+      </label>
+
     </div>
   ) : (
     <ReadOnlyText
       value={
-        selected.hidden
+        selected.outOfStock
+          ? "Out of Stock"
+          : selected.hidden
           ? "Hidden"
-          : "Visible"
+          : "Available"
       }
     />
   )}
 </Field>
-
                           <Field label="Discount">
             <InputField
               editing={editing}

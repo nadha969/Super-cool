@@ -59,6 +59,12 @@ export default async function CategoryPage({
       {product.discount}% OFF
     </div>
   )}
+  {/* Out of Stock Badge */}
+{product.outOfStock && (
+  <div className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md z-10">
+    OUT OF STOCK
+  </div>
+)}
 
   <Image
     src={
