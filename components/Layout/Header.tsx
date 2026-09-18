@@ -47,6 +47,7 @@ export default function Header() {
            <Link className="hover:underline hover:text-black" href="/brands/gree">Gree</Link>
             <Link className="hover:underline hover:text-black" href="/brands/trane">Trane</Link>
             <Link className="hover:underline hover:text-black" href="/brands/hisense">Hisense</Link>
+            <Link className="hover:underline hover:text-black" href="/brands/mitsubishi">Mitsubishi</Link>
 
           </nav>
 
@@ -83,6 +84,8 @@ export default function Header() {
               <Link href="/brands/hitachi" onClick={() => setMenuOpen(false)}>Hitachi</Link>
               <Link href="/brands/trane" onClick={() => setMenuOpen(false)}>Trane</Link>
               <Link href="/brands/hisense" onClick={() => setMenuOpen(false)}>Hisense</Link>
+              <Link href="/brands/mitsubishi" onClick={() => setMenuOpen(false)}>Mitsubishi</Link>
+
             </nav>
           </div>
         )}

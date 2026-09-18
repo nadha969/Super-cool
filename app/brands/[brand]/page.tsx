@@ -6,6 +6,7 @@ import Hisense from "@/components/Carrier/hisense";
 import Hitachi from "@/components/Carrier/hitachi";
 import LG from "@/components/Carrier/lg";
 import Midea from "@/components/Carrier/midea";
+import Mitsubishi from "@/components/Carrier/mitsubishi";
 import OGeneral from "@/components/Carrier/o-general";
 import Supergeneral from "@/components/Carrier/supergeneral";
 import Trane from "@/components/Carrier/trane";
@@ -49,6 +50,9 @@ export default async function BrandPage({ params }: any) {
    }
    if(brand==="gree"){
      return<Gree/>
+   }
+    if(brand==="mitsubishi"){
+     return<Mitsubishi/>
    }
   return <div>Brand not found</div>;
 }

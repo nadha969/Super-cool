@@ -56,6 +56,11 @@ export default function Brands() {
       name: "hisense",
       image:
         "/logo/hisense-logo.png",
+    },
+    {
+      name: "mitsubishi",
+      image:
+        "/logo/mitsubishi.png",
     }
   ];
 
