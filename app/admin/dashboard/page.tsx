@@ -10,6 +10,7 @@ import ProductList from "@/components/Admin/ProducList";
 import AddProduct from "@/components/Admin/Addproduct";
 import Categories from "@/components/Admin/Categories";
 import Brands from "@/components/Admin/Brands";
+import Reviews from "@/components/Admin/Reviews";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -83,6 +84,8 @@ const [categories, setCategories] = useState<any[]>([]);
         {tab === "brands" && (
   <Brands refresh={loadData} />
 )}
+
+{tab === "reviews" && <Reviews />}
       </main>
     </div>
   );

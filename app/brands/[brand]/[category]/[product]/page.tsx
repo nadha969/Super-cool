@@ -10,7 +10,7 @@ import {
   useEffect,
   useState,
 } from "react";
-
+import ReviewsPage from "@/components/category/Productreview";
 async function getProduct(
   product: string
 ) {
@@ -273,13 +273,13 @@ export default function ProductPage({
     </div>
   </div>
 </section>
-
-
 </div>
 
           </div>
         </div>
-        
+        <div>
+  <ReviewsPage productSlug={product} />
+</div>
       </div>
 
       <Footer />
