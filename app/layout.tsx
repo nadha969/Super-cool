@@ -1,11 +1,11 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Layout/Header";
-import Footer from "@/components/Layout/Footer";
+import ConditionalLayout from "@/components/Layout/Conditionallayoyt";
 import { ToastContainer } from "react-toastify";
 import WhatsAppButton from "@/components/category/Whatsappbutton";
-
+import { CartProvider } from "@/context/cartcontext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,16 +28,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-  <html lang="en">
-    <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <CartProvider>
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
 
-      {children}
-      
-      <WhatsAppButton />
- <ToastContainer position="top-right" autoClose={2000} />
-    </body>
-  </html>
-)
+          <WhatsAppButton />
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+          />
+        </CartProvider>
+      </body>
+    </html>
+  );
 }

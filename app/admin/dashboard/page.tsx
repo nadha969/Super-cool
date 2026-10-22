@@ -11,6 +11,7 @@ import AddProduct from "@/components/Admin/Addproduct";
 import Categories from "@/components/Admin/Categories";
 import Brands from "@/components/Admin/Brands";
 import Reviews from "@/components/Admin/Reviews";
+import Orders from "@/components/Admin/Orders"; 
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -51,7 +52,7 @@ const [categories, setCategories] = useState<any[]>([]);
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar tab={tab} setTab={setTab} logout={logout} />
 
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-4">
         <Header title={tab} />
 
         {tab === "overview" && (
@@ -86,6 +87,7 @@ const [categories, setCategories] = useState<any[]>([]);
 )}
 
 {tab === "reviews" && <Reviews />}
+{tab === "orders" && <Orders />}
       </main>
     </div>
   );

@@ -10,7 +10,7 @@ import {
   Save,
   Plus,
 } from "lucide-react";
-
+import { useEffect,  } from "react";
 export default function ProductList({
   products,
   brands,
@@ -174,6 +174,24 @@ console.log("SAVE PAYLOAD:", payload);
     });
   };
 
+  // pagination
+  const [currentPage, setCurrentPage] = useState(1);
+const productsPerPage = 10;
+
+const totalPages = Math.ceil(list.length / productsPerPage);
+const startIndex = (currentPage - 1) * productsPerPage;
+
+const currentProducts = list.slice(
+  startIndex,
+  startIndex + productsPerPage
+);
+
+useEffect(() => {
+  setCurrentPage((page) =>
+    Math.min(page, Math.max(1, Math.ceil(list.length / productsPerPage)))
+  );
+}, [list.length]);
+
   return (
     <div className="w-full max-w-7xl mx-auto">
       {/* Table Card */}
@@ -219,7 +237,7 @@ console.log("SAVE PAYLOAD:", payload);
 
             <tbody className="divide-y divide-gray-100">
               {list.length > 0 ? (
-                list.map((item: any) => (
+               currentProducts.map((item: any) => (
                   <tr
                     key={item._id}
                     onClick={() =>
@@ -302,7 +320,54 @@ console.log("SAVE PAYLOAD:", payload);
           </table>
         </div>
       </div>
+{/* Pagination */}
+{list.length > 0 && (
+  <div className="mt-5 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm">
+    <p className="text-sm text-gray-500">
+      Showing {startIndex + 1}–
+      {Math.min(startIndex + productsPerPage, list.length)} of{" "}
+      {list.length} products
+    </p>
 
+    <div className="flex flex-wrap items-center gap-2">
+      <button
+        onClick={() =>
+          setCurrentPage((page) => Math.max(1, page - 1))
+        }
+        disabled={currentPage === 1}
+        className="rounded-lg border border-gray-300 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        Previous
+      </button>
+
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+        (page) => (
+          <button
+            key={page}
+            onClick={() => setCurrentPage(page)}
+            className={`min-w-10 rounded-lg border px-3 py-2 text-sm ${
+              currentPage === page
+                ? "border-blue-600 bg-blue-600 text-white"
+                : "border-gray-300 text-gray-700 hover:bg-gray-50"
+            }`}
+          >
+            {page}
+          </button>
+        )
+      )}
+
+      <button
+        onClick={() =>
+          setCurrentPage((page) => Math.min(totalPages, page + 1))
+        }
+        disabled={currentPage === totalPages}
+        className="rounded-lg border border-gray-300 px-4 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+)}
       {/* Modal */}
       {selected && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
@@ -744,6 +809,7 @@ const src =
                 )}
               </div>
             </div>
+            
           </div>
         </div>
       )}

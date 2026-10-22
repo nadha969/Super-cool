@@ -15,6 +15,7 @@ export default function Sidebar({ tab, setTab, logout }: any) {
     { name: "add-product", icon: <PlusCircle size={18} /> },
     { name: "categories", icon: <Layers size={18} /> },
     { name: "reviews", icon: <Star size={18} /> },
+    {name: "orders", icon: <Package size={18} /> },
   ];
 
   return (
