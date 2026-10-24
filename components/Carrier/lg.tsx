@@ -75,7 +75,6 @@ export default async function LG() {
 
   return (
     <div>
-      <Header />
 
       {/* Hero */}
       <main className="pt-30 flex-1">
@@ -134,7 +133,6 @@ export default async function LG() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

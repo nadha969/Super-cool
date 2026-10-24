@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from '@/components/Layout/Footer';
-import Header from '@/components/Layout/Header';
 import React from 'react';
 
 interface PolicySection {
@@ -178,7 +176,6 @@ export default function RefundPolicy() {
 
   return (
   <div>
-    <Header/>
       <div className="min-h-screen bg-slate-50/50 text-slate-700 antialiased font-sans selection:bg-blue-100 selection:text-blue-900 mt-20">
       {/* Header Container */}
       <div className="bg-white border-b border-slate-200 py-12 md:py-16">
@@ -246,7 +243,6 @@ export default function RefundPolicy() {
         </div>
       </div>
     </div>
-    <Footer/>
   </div>
   );
 }

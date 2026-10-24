@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Header from "../Layout/Header";
-import Footer from "../Layout/Footer";
 import { BASE_URL } from "@/lib/api";
 
 type Product = {
@@ -60,7 +58,6 @@ export default async function Midea() {
 
   return (
     <div>
-      <Header />
 
       {/* Hero */}
       <main className="pt-30 flex-1">
@@ -118,7 +115,6 @@ export default async function Midea() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

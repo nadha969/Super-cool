@@ -5,8 +5,6 @@ import {
   Truck, Wrench, ShieldAlert, RotateCcw, UserCheck, 
   AlertTriangle, Copyright, Scale, Lock, ChevronRight 
 } from 'lucide-react';
-import Footer from '@/components/Layout/Footer';
-import Header from '@/components/Layout/Header';
 
 
 export default function TermsAndConditions() {
@@ -38,7 +36,6 @@ export default function TermsAndConditions() {
 
   return (
  <div>
-    <Header/>
        <div className="min-h-screen bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
    
 {/* Hero Heading */}
@@ -362,7 +359,6 @@ export default function TermsAndConditions() {
         </div>
       </div>
     </div>
-    <Footer/>
  </div>
   );
 }

@@ -131,7 +131,6 @@ const handleAddToCart = () => {
         <main className="min-h-[50vh] pt-40 text-center">
           Loading product...
         </main>
-        <Footer />
       </>
     );
   }
@@ -148,7 +147,6 @@ const handleAddToCart = () => {
             This product may have been removed or is unavailable.
           </p>
         </main>
-        <Footer />
       </>
     );
   }
@@ -336,7 +334,6 @@ const handleAddToCart = () => {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

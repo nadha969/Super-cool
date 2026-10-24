@@ -78,7 +78,6 @@ export default async function Hitachi() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
 
       {/* Hero Section */}
       <main className="pt-30 flex-1">
@@ -140,7 +139,6 @@ export default async function Hitachi() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

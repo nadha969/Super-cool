@@ -1,8 +1,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "../Layout/Footer";
-import Header from "../Layout/Header";
 import { BASE_URL } from "@/lib/api";
 
 type Product = {
@@ -63,7 +61,6 @@ export default async function Trane() {
 
   return (
     <div>
-      <Header />
 
       {/* Hero */}
       <main className="pt-30 flex-1">
@@ -147,7 +144,6 @@ export default async function Trane() {
         </div>
       </section>
 
-      <Footer />
 
       {/* Small Animations */}
       <style>{`

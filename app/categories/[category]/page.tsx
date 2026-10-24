@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Layout/Header";
-import Footer from "@/components/Layout/Footer";
 import { BASE_URL } from "@/lib/api";
 
 async function getProducts() {
@@ -141,7 +140,6 @@ export default async function CategoryPage({
         </main>
       </div>
 
-      <Footer />
     </div>
   );
 }

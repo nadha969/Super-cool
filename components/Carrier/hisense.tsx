@@ -71,7 +71,6 @@ export default async function Hisense() {
 
   return (
     <div>
-      <Header />
 
       {/* Hero */}
       <main className="pt-30 flex-1">
@@ -130,7 +129,6 @@ export default async function Hisense() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

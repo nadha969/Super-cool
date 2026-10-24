@@ -60,7 +60,7 @@ export default async function Mitsubishi() {
 
   return (
     <div className="bg-white">
-      <Header />
+      
 
       {/* Hero */}
       <main className="pt-30">
@@ -195,7 +195,6 @@ export default async function Mitsubishi() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "../Layout/Footer";
-import Header from "../Layout/Header";
 import { BASE_URL } from "@/lib/api";
 
 async function getProducts() {
@@ -29,7 +27,6 @@ export default async function Carriercategory({
 
   return (
     <div>
-      <Header />
 
       <div className="min-h-screen bg-gray-50 px-6 lg:px-16 py-10">
      <h1 className="text-3xl font-bold text-center mb-10 capitalize mt-25">
@@ -93,7 +90,6 @@ export default async function Carriercategory({
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 }
