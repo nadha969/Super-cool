@@ -274,14 +274,14 @@ const handleAddToCart = () => {
 
             {/* Add to Cart and WhatsApp Enquiry */}
             <div className="mt-10 flex flex-wrap gap-4">
-              {/* <button
+              <button
                 type="button"
                 onClick={handleAddToCart}
                 disabled={Boolean(item.outOfStock)}
                 className="inline-flex items-center justify-center rounded-full bg-[#1a2b6d] px-7 py-3 font-semibold text-white transition hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {item.outOfStock ? "Out of Stock" : "Add to Cart"}
-              </button> */}
+              </button>
 
               <a
                 href="https://api.whatsapp.com/send?phone=+971547400992"
