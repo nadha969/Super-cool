@@ -8,6 +8,7 @@ const OrderSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+
     customer: {
       name: { type: String, required: true },
       email: { type: String, required: true },
@@ -15,8 +16,9 @@ const OrderSchema = new mongoose.Schema(
       address: { type: String, required: true },
       city: { type: String, required: true },
       postalCode: { type: String, default: "" },
-notes: { type: String, default: "" },
+      notes: { type: String, default: "" },
     },
+
     items: [
       {
         productId: {
@@ -31,24 +33,65 @@ notes: { type: String, default: "" },
         quantity: { type: Number, required: true },
       },
     ],
-    totalAmount: { type: Number, required: true },
-    currency: { type: String, default: "aed" },
+
+    // Price breakdown
+    subtotal: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+    vatAmount: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+    processingFee: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+    totalAmount: {
+      type: Number,
+      required: true,
+    },
+
+    currency: {
+      type: String,
+      default: "aed",
+    },
+
     paymentMethod: {
       type: String,
       enum: ["stripe", "cod"],
       required: true,
     },
+
     paymentStatus: {
       type: String,
       enum: ["pending", "paid", "failed"],
       default: "pending",
     },
+
     orderStatus: {
       type: String,
-      enum: ["pending", "confirmed", "processing", "shipped", "delivered", "cancelled"],
+      enum: [
+        "pending",
+        "confirmed",
+        "processing",
+        "shipped",
+        "delivered",
+        "cancelled",
+      ],
       default: "pending",
     },
-    stripeSessionId: { type: String, default: "" },
+
+    stripeSessionId: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
