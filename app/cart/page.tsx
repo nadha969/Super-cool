@@ -217,8 +217,8 @@ export default function CartPage() {
                 </div>
 
                 <div className="flex justify-between gap-4 text-gray-600">
-                  <span>Payment Processing Fee (3%)</span>
-                  <span>{formatPrice(stripeFee)}</span>
+                  <span className="text-xs">Payment Processing Fee (3%)</span>
+                  <span className="text-xs">{formatPrice(stripeFee)}</span>
                 </div>
 
                 <div className="border-t border-gray-200 pt-4">

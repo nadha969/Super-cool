@@ -368,8 +368,8 @@ const total = subtotal + vat + stripeFee;
 </div>
 
 <div className="flex justify-between gap-3 text-gray-600">
-  <span>Payment Processing Fee (3%)</span>
-  <span>{formatPrice(stripeFee)}</span>
+  <span className="text-xs">Payment Processing Fee (3%)</span>
+  <span className="text-xs">{formatPrice(stripeFee)}</span>
 </div>
 
 <div className="flex justify-between gap-3 border-t border-gray-200 pt-4 text-lg font-bold text-gray-900">
