@@ -20,8 +20,14 @@ export default function CartPage() {
     0
   );
 
+  // VAT: 5%
   const vat = subtotal * 0.05;
-  const total = subtotal + vat;
+
+  // Payment processing fee: 3% of subtotal + VAT
+  const stripeFee = (subtotal + vat) * 0.03;
+
+  // Final total
+  const total = subtotal + vat + stripeFee;
 
   const formatPrice = (price: number) =>
     `AED ${price.toLocaleString("en-AE", {
@@ -51,8 +57,10 @@ export default function CartPage() {
             <h1 className="text-3xl font-bold text-gray-900">
               Shopping Cart
             </h1>
+
             <p className="mt-2 text-gray-500">
-              {items.length} {items.length === 1 ? "product" : "products"} in your cart
+              {items.length}{" "}
+              {items.length === 1 ? "product" : "products"} in your cart
             </p>
           </div>
 
@@ -169,6 +177,7 @@ export default function CartPage() {
                     <p className="text-sm text-gray-500">
                       Item total
                     </p>
+
                     <p className="mt-1 font-bold text-gray-900">
                       {formatPrice(item.price * item.quantity)}
                     </p>
@@ -205,6 +214,11 @@ export default function CartPage() {
                 <div className="flex justify-between gap-4 text-gray-600">
                   <span>VAT (5%)</span>
                   <span>{formatPrice(vat)}</span>
+                </div>
+
+                <div className="flex justify-between gap-4 text-gray-600">
+                  <span>Payment Processing Fee (3%)</span>
+                  <span>{formatPrice(stripeFee)}</span>
                 </div>
 
                 <div className="border-t border-gray-200 pt-4">

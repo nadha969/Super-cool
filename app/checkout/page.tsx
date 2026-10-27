@@ -27,7 +27,11 @@ export default function CheckoutPage() {
   );
 
   const vat = Math.round(subtotal * 5) / 100;
-  const total = subtotal + vat;
+
+const stripeFee =
+  Math.round((subtotal + vat) * 3) / 100;
+
+const total = subtotal + vat + stripeFee;
 
   const formatPrice = (price: number) =>
     `AED ${price.toLocaleString("en-AE", {
@@ -353,22 +357,25 @@ export default function CheckoutPage() {
                   </div>
                 </div>
 
-                <div className="mt-6 space-y-4 border-t border-gray-200 pt-5">
-                  <div className="flex justify-between gap-3 text-gray-600">
-                    <span>Subtotal</span>
-                    <span>{formatPrice(subtotal)}</span>
-                  </div>
+              <div className="flex justify-between gap-3 text-gray-600">
+  <span>Subtotal</span>
+  <span>{formatPrice(subtotal)}</span>
+</div>
 
-                  <div className="flex justify-between gap-3 text-gray-600">
-                    <span>VAT (5%)</span>
-                    <span>{formatPrice(vat)}</span>
-                  </div>
+<div className="flex justify-between gap-3 text-gray-600">
+  <span>VAT (5%)</span>
+  <span>{formatPrice(vat)}</span>
+</div>
 
-                  <div className="flex justify-between gap-3 border-t border-gray-200 pt-4 text-lg font-bold text-gray-900">
-                    <span>Total</span>
-                    <span>{formatPrice(total)}</span>
-                  </div>
-                </div>
+<div className="flex justify-between gap-3 text-gray-600">
+  <span>Payment Processing Fee (3%)</span>
+  <span>{formatPrice(stripeFee)}</span>
+</div>
+
+<div className="flex justify-between gap-3 border-t border-gray-200 pt-4 text-lg font-bold text-gray-900">
+  <span>Total</span>
+  <span>{formatPrice(total)}</span>
+</div>
 
                 <button
                   type="submit"
