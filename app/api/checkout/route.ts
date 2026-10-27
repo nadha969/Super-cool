@@ -8,6 +8,7 @@ import { stripe } from "@/lib/stripe";
 export const runtime = "nodejs";
 
 const VAT_RATE = 0.05;
+const PROCESSING_FEE_RATE = 0.03;
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,7 +25,7 @@ export async function POST(req: NextRequest) {
       !customer?.phone ||
       !customer?.address ||
       !customer?.city ||
-      !["stripe", "cod"].includes(paymentMethod)
+      paymentMethod !== "stripe"
     ) {
       return NextResponse.json(
         { message: "Please provide valid order and customer details." },
@@ -86,25 +87,35 @@ export async function POST(req: NextRequest) {
 
     // Calculate subtotal in fils to avoid currency rounding errors.
     const subtotalInFils = orderItems.reduce(
-      (total, item) =>
-        total + Math.round(item.price * 100) * item.quantity,
+      (sum, item) =>
+        sum + Math.round(item.price * 100) * item.quantity,
       0
     );
 
     // Calculate 5% VAT.
-    const vatInFils = Math.round(subtotalInFils * VAT_RATE);
+    const vatInFils = Math.round(
+      subtotalInFils * VAT_RATE
+    );
 
-    // Final total includes VAT.
-    const totalInFils = subtotalInFils + vatInFils;
+    // Calculate 3% processing fee on subtotal + VAT.
+    const processingFeeInFils = Math.round(
+      (subtotalInFils + vatInFils) * PROCESSING_FEE_RATE
+    );
+
+    // Final total includes subtotal, VAT, and processing fee.
+    const totalInFils =
+      subtotalInFils + vatInFils + processingFeeInFils;
 
     const subtotal = subtotalInFils / 100;
     const vatAmount = vatInFils / 100;
+    const processingFee = processingFeeInFils / 100;
     const totalAmount = totalInFils / 100;
 
     const orderNumber = `ACM-${Date.now()}-${Math.floor(
       1000 + Math.random() * 9000
     )}`;
 
+    // Save the complete price breakdown in MongoDB.
     const order = await Order.create({
       orderNumber,
       customer: {
@@ -115,25 +126,18 @@ export async function POST(req: NextRequest) {
         city: String(customer.city).trim(),
       },
       items: orderItems,
+      subtotal,
+      vatAmount,
+      processingFee,
       totalAmount,
       currency: "aed",
-      paymentMethod,
+      paymentMethod: "stripe",
       paymentStatus: "pending",
       orderStatus: "pending",
     });
 
-    // Cash on Delivery: VAT is included in the saved total.
-    if (paymentMethod === "cod") {
-      return NextResponse.json({
-        message: "Order placed successfully.",
-        orderNumber: order.orderNumber,
-        subtotal,
-        vatAmount,
-        totalAmount,
-      });
-    }
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     if (!baseUrl) {
       await Order.findByIdAndDelete(order._id);
 
@@ -143,7 +147,9 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
       );
     }
 
-    // Stripe receives product prices plus a separate VAT line item.
+    const websiteUrl = baseUrl.replace(/\/$/, "");
+
+    // Stripe charges products + VAT + processing fee.
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       customer_email: String(customer.email).trim(),
@@ -169,6 +175,16 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
           },
           quantity: 1,
         },
+        {
+          price_data: {
+            currency: "aed",
+            product_data: {
+              name: "Payment Processing Fee (3%)",
+            },
+            unit_amount: processingFeeInFils,
+          },
+          quantity: 1,
+        },
       ],
 
       metadata: {
@@ -176,8 +192,8 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
         orderNumber: order.orderNumber,
       },
 
-      success_url: `${baseUrl.replace(/\/$/, "")}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl.replace(/\/$/, "")}/checkout/cancel`,
+      success_url: `${websiteUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${websiteUrl}/checkout/cancel`,
     });
 
     order.stripeSessionId = session.id;
@@ -188,6 +204,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
       orderNumber: order.orderNumber,
       subtotal,
       vatAmount,
+      processingFee,
       totalAmount,
     });
   } catch (error) {
