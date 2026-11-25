@@ -24,7 +24,7 @@ export default function Collection() {
     {
       title: "CASSETTE AC",
       slug: "cassatte-unit",
-      img: "https://www.generalcool.ae/wp-content/uploads/2023/08/Cassette.jpg",
+      img: "/products/cassette.jpeg",
     },
     {
       title: "PACKAGE UNIT",
